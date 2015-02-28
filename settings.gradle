@@ -1,1 +1,1 @@
-include ':app', ':droppy'
+include ':samples', ':library'

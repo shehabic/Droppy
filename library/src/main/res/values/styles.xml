@@ -1,0 +1,47 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="DroppyMenuPopup">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/abc_popup_background_mtrl_mult</item>
+    </style>
+
+    <style name="DroppyMenu">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="DroppyMenuSeparator">
+        <item name="android:background">#99000000</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="DroppyMenuItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:clickable">true</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:padding">2dp</item>
+    </style>
+
+    <style name="DroppyMenuItemIcon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_gravity">start</item>
+        <item name="android:layout_weight">0</item>
+    </style>
+
+    <style name="DroppyMenuItemTitle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_gravity">end</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+</resources>
