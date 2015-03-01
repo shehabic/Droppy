@@ -9,7 +9,7 @@ import android.view.View;
 public class DroppyMenuSeparator extends DroppyMenuItemAbstract {
 
     public DroppyMenuSeparator() {
-        initSeparator(R.layout.separator);
+        initSeparator(R.layout.droppy_separator);
     }
 
     public DroppyMenuSeparator(int customSeparatorResourceId) {
@@ -19,7 +19,8 @@ public class DroppyMenuSeparator extends DroppyMenuItemAbstract {
     protected void initSeparator(int separatorLayoutResourceId) {
         this.customViewResourceId = separatorLayoutResourceId;
         this.type = TYPE_MENU_SEPARATOR;
-        this.id = -1;
+        this.setId(-1);
+        this.setClickable(false);
     }
 
     @Override

@@ -8,7 +8,7 @@ import android.view.View;
  */
 public interface DroppyMenuItemInterface {
     /**
-     * Get type of menu item (e.g. menu, separator .... more type to be defined later)
+     * Get type of droppy_menu item (e.g. droppy_menu, droppy_separator .... more type to be defined later)
      *
      * @return String
      */

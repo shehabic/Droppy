@@ -6,25 +6,35 @@
     </style>
 
     <style name="DroppyMenuPopup">
+        <item name="android:minWidth">120dp</item>
+        <item name="android:minHeight">20dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/bt_bg_popupmenu</item>
     </style>
 
     <style name="DroppyMenu">
+        <item name="android:minWidth">120dp</item>
+        <item name="android:minHeight">20dp</item>
         <item name="android:orientation">vertical</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="DroppyMenuSeparator">
+        <item name="android:minWidth">120dp</item>
+        <item name="android:minHeight">1dp</item>
         <item name="android:background">#99000000</item>
         <item name="android:layout_height">0.5dp</item>
         <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:layout_marginBottom">3dp</item>
         <item name="android:orientation">horizontal</item>
     </style>
 
     <style name="DroppyMenuItem">
+        <item name="android:minWidth">120dp</item>
+        <item name="android:minHeight">20dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:clickable">true</item>
@@ -36,9 +46,13 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_gravity">start</item>
         <item name="android:layout_weight">0</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="DroppyMenuItemTitle">
+        <item name="android:minWidth">100dp</item>
+        <item name="android:minHeight">20dp</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_gravity">end</item>
         <item name="android:layout_weight">1</item>
