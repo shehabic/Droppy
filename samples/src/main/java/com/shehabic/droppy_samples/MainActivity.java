@@ -11,33 +11,54 @@ import android.widget.Button;
 import com.shehabic.droppy.DroppyClickCallbackInterface;
 import com.shehabic.droppy.DroppyMenu;
 import com.shehabic.droppy.DroppyMenuItem;
+import com.shehabic.droppy_samples.R;
 
 public class MainActivity extends ActionBarActivity {
 
     DroppyMenu droppyMenu;
     Button btn;
+    Button btn2;
+    Button btn3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btn = (Button) findViewById(R.id.button);
-        initDroppyMenu();
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                initDroppyMenu(btn);
+                droppyMenu.show();
+            }
+        });
+
+        btn2 = (Button) findViewById(R.id.button2);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initDroppyMenu(btn2);
+                droppyMenu.show();
+            }
+        });
+
+        btn3 = (Button) findViewById(R.id.button3);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initDroppyMenu(btn3);
                 droppyMenu.show();
             }
         });
     }
 
-    private void initDroppyMenu()
+    private void initDroppyMenu(Button btn)
     {
         DroppyMenu.Builder droppyBuilder = new DroppyMenu.Builder(this, btn);
         droppyBuilder.addMenuItem(new DroppyMenuItem("test1"));
         droppyBuilder.addMenuItem(new DroppyMenuItem("test2"));
         droppyBuilder.addSeparator();
-        droppyBuilder.addMenuItem(new DroppyMenuItem("test3"));
+        droppyBuilder.addMenuItem(new DroppyMenuItem("test3", R.drawable.ic_launcher));
         droppyBuilder.addMenuItem(new DroppyMenuItem("test4"));
         droppyBuilder.setOnClick(new DroppyClickCallbackInterface() {
             @Override

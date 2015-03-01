@@ -1,7 +1,6 @@
 package com.shehabic.droppy;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,10 +32,10 @@ public class DroppyMenuItem extends DroppyMenuItemAbstract {
 
     @Override
     public View render(Context context) {
-        if (this.renderedView == null) {
-            this.renderedView = LayoutInflater.from(context).inflate(this.customViewResourceId, null);
-        }
+        super.render(context);
+
         ((TextView) this.renderedView.findViewById(R.id.title)).setText(this.title);
+
         if (this.icon != -1) {
             ((ImageView) this.renderedView.findViewById(R.id.icon)).setImageResource(this.icon);
         }
