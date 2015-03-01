@@ -44,4 +44,9 @@ public interface DroppyMenuItemInterface {
      * @return boolean
      */
     public boolean isClickable();
+
+    /**
+     * @return View
+     */
+    public View getView();
 }

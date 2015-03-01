@@ -60,4 +60,9 @@ public abstract class DroppyMenuItemAbstract implements DroppyMenuItemInterface 
     public boolean isClickable() {
         return isClickable;
     }
+
+    @Override
+    public View getView() {
+        return renderedView;
+    }
 }

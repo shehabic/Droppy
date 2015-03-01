@@ -17,16 +17,16 @@ public class DroppyMenuSeparator extends DroppyMenuItemAbstract {
     }
 
     protected void initSeparator(int separatorLayoutResourceId) {
-        this.customViewResourceId = separatorLayoutResourceId;
-        this.type = TYPE_MENU_SEPARATOR;
-        this.setId(-1);
-        this.setClickable(false);
+        customViewResourceId = separatorLayoutResourceId;
+        type = TYPE_MENU_SEPARATOR;
+        setId(-1);
+        setClickable(false);
     }
 
     @Override
     public View render(Context context) {
-        if (this.renderedView == null) {
-            this.renderedView = LayoutInflater.from(context).inflate(this.customViewResourceId, null);
+        if (renderedView == null) {
+            renderedView = LayoutInflater.from(context).inflate(this.customViewResourceId, null);
         }
 
         return renderedView;

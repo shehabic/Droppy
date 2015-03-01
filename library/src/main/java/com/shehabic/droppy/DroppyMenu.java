@@ -3,7 +3,6 @@ package com.shehabic.droppy;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
-import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.view.Display;
 import android.view.Gravity;
@@ -37,19 +36,7 @@ public class DroppyMenu {
     private View.OnTouchListener mTouchInterceptor;
     private Drawable mBackground;
 
-    private static final int[] ABOVE_ANCHOR_STATE_SET = new int[]{
-        -300215
-    };
-
-    /**
-     * Set a callback for all touch events being dispatched to the popup
-     * window.
-     */
-    public void setTouchInterceptor(View.OnTouchListener l) {
-        mTouchInterceptor = l;
-    }
-
-    DroppyMenu(
+    private DroppyMenu(
         Context mContext,
         View parentMenuItem,
         List<DroppyMenuItemInterface> menuItem,
@@ -71,6 +58,23 @@ public class DroppyMenu {
 
     private Activity getActivity() {
         return (Activity) mContext;
+    }
+
+    public View getMenuView()
+    {
+        return mPopupView;
+    }
+
+    public DroppyMenuItemInterface getMenuItemById(int id)
+    {
+        for (DroppyMenuItemInterface menuItem: menuItems)
+        {
+            if (menuItem.getId() == id) {
+                return menuItem;
+            }
+        }
+
+        return null;
     }
 
     public void measureScreenDimensions() {
@@ -171,14 +175,6 @@ public class DroppyMenu {
 
     private int mPopupWidth;
     private int mPopupHeight;
-
-    private int[] mDrawingLocation = new int[2];
-    private int[] mScreenLocation = new int[2];
-    private Rect mTempRect = new Rect();
-    private boolean mAllowScrollingAnchorParent = true;
-    private boolean mClipToScreen = true;
-    private boolean mAboveAnchor;
-
     protected int statusBarHeight = -1;
 
     protected Point getScreenSize() {
@@ -245,77 +241,8 @@ public class DroppyMenu {
 
 
     private class PopupViewContainer extends FrameLayout {
-        private static final String TAG = "PopupWindow.PopupViewContainer";
-
         public PopupViewContainer(Context context) {
             super(context);
-        }
-
-        @Override
-        protected int[] onCreateDrawableState(int extraSpace) {
-            return super.onCreateDrawableState(extraSpace);
-        }
-
-        @Override
-        public boolean dispatchKeyEvent(KeyEvent event) {
-            if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
-                if (getKeyDispatcherState() == null) {
-                    return super.dispatchKeyEvent(event);
-                }
-
-                if (event.getAction() == KeyEvent.ACTION_DOWN
-                    && event.getRepeatCount() == 0) {
-                    KeyEvent.DispatcherState state = getKeyDispatcherState();
-                    if (state != null) {
-                        state.startTracking(event, this);
-                    }
-                    return true;
-                } else if (event.getAction() == KeyEvent.ACTION_UP) {
-                    KeyEvent.DispatcherState state = getKeyDispatcherState();
-                    if (state != null && state.isTracking(event) && !event.isCanceled()) {
-                        dismiss();
-                        return true;
-                    }
-                }
-                return super.dispatchKeyEvent(event);
-            } else {
-                return super.dispatchKeyEvent(event);
-            }
-        }
-
-        @Override
-        public boolean dispatchTouchEvent(MotionEvent ev) {
-            if (mTouchInterceptor != null && mTouchInterceptor.onTouch(this, ev)) {
-                return true;
-            }
-            return super.dispatchTouchEvent(ev);
-        }
-
-        @Override
-        public boolean onTouchEvent(MotionEvent event) {
-            final int x = (int) event.getX();
-            final int y = (int) event.getY();
-
-            if ((event.getAction() == MotionEvent.ACTION_DOWN)
-                && ((x < 0) || (x >= getWidth()) || (y < 0) || (y >= getHeight()))) {
-                dismiss();
-                return true;
-            } else if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
-                dismiss();
-                return true;
-            } else {
-                return super.onTouchEvent(event);
-            }
-        }
-
-        @Override
-        public void sendAccessibilityEvent(int eventType) {
-            // clinets are interested in the content not the container, make it event source
-            if (mContentView != null) {
-                mContentView.sendAccessibilityEvent(eventType);
-            } else {
-                super.sendAccessibilityEvent(eventType);
-            }
         }
     }
 
@@ -353,5 +280,4 @@ public class DroppyMenu {
             return new DroppyMenu(ctx, parentMenuItem, menuItems, callbackInterface, -1);
         }
     }
-
 }

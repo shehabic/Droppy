@@ -7,11 +7,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SeekBar;
 
 import com.shehabic.droppy.DroppyClickCallbackInterface;
 import com.shehabic.droppy.DroppyMenu;
+import com.shehabic.droppy.DroppyMenuCustomView;
 import com.shehabic.droppy.DroppyMenuItem;
-import com.shehabic.droppy_samples.R;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -19,6 +20,29 @@ public class MainActivity extends ActionBarActivity {
     Button btn;
     Button btn2;
     Button btn3;
+
+    protected int seekbarValue = 0;
+
+    protected void showDroppyMenu()
+    {
+        droppyMenu.show();
+        SeekBar sBar = (SeekBar) droppyMenu.getMenuView().findViewById(R.id.seekBar1);
+        sBar.setProgress(seekbarValue);
+        sBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                seekbarValue = progress;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +53,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 initDroppyMenu(btn);
-                droppyMenu.show();
+                showDroppyMenu();
             }
         });
 
@@ -38,7 +62,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 initDroppyMenu(btn2);
-                droppyMenu.show();
+                showDroppyMenu();
             }
         });
 
@@ -47,7 +71,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 initDroppyMenu(btn3);
-                droppyMenu.show();
+                showDroppyMenu();
             }
         });
     }
@@ -59,7 +83,9 @@ public class MainActivity extends ActionBarActivity {
         droppyBuilder.addMenuItem(new DroppyMenuItem("test2"));
         droppyBuilder.addSeparator();
         droppyBuilder.addMenuItem(new DroppyMenuItem("test3", R.drawable.ic_launcher));
-        droppyBuilder.addMenuItem(new DroppyMenuItem("test4"));
+
+        DroppyMenuCustomView sBarItem = new DroppyMenuCustomView(R.layout.slider);
+        droppyBuilder.addMenuItem(sBarItem);
         droppyBuilder.setOnClick(new DroppyClickCallbackInterface() {
             @Override
             public void call(View v, int id) {
