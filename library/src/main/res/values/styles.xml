@@ -29,7 +29,7 @@
         <item name="android:orientation">horizontal</item>
     </style>
 
-    <style name="DroppyMenuItem" parent="RtlOverlay.Widget.AppCompat.PopupMenuItem">
+    <style name="DroppyMenuItem">
         <item name="android:minWidth">120dp</item>
         <item name="android:minHeight">30dp</item>
         <item name="android:layout_width">match_parent</item>
@@ -41,6 +41,7 @@
         <item name="android:paddingBottom">2dp</item>
         <item name="android:paddingLeft">5dp</item>
         <item name="android:paddingRight">5dp</item>
+        <item name="android:background">@drawable/droppy_list_item_selector</item>
     </style>
 
     <style name="DroppyMenuItemIcon">

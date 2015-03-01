@@ -2,7 +2,6 @@ package com.shehabic.droppy;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -38,7 +37,7 @@ public class DroppyMenu {
     private View.OnTouchListener mTouchInterceptor;
     private Drawable mBackground;
 
-    private static final int[] ABOVE_ANCHOR_STATE_SET = new int[] {
+    private static final int[] ABOVE_ANCHOR_STATE_SET = new int[]{
         -300215
     };
 
@@ -66,7 +65,7 @@ public class DroppyMenu {
         }
         this.popupMenuLayoutResourceId = popupMenuLayoutResourceId;
         measureScreenDimensions();
-        mWindowManager = (WindowManager)mContext.getSystemService(mContext.WINDOW_SERVICE);
+        mWindowManager = (WindowManager) mContext.getSystemService(mContext.WINDOW_SERVICE);
         mBackground = mContext.getResources().getDrawable(R.drawable.bt_bg_popupmenu);
     }
 
@@ -187,6 +186,7 @@ public class DroppyMenu {
         ((Activity) anchor.getContext()).getWindowManager().getDefaultDisplay().getSize(size);
         return size;
     }
+
     protected boolean isTranslucentStatusBar() {
         Window w = ((Activity) anchor.getContext()).getWindow();
         WindowManager.LayoutParams lp = w.getAttributes();
@@ -221,6 +221,7 @@ public class DroppyMenu {
     private void adjustDropDownPosition(FrameLayout.LayoutParams params) {
         adjustDropDownPosition(params, 0, 0);
     }
+
     private void adjustDropDownPosition(FrameLayout.LayoutParams params, int xOffset, int yOffset) {
         Point p = getAnchorCoordinates();
         int finalX = p.x + xOffset;

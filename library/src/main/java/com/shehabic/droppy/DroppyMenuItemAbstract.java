@@ -8,8 +8,7 @@ import android.view.ViewGroup;
 /**
  * Created by shehabic on 2/28/15.
  */
-public abstract class DroppyMenuItemAbstract implements DroppyMenuItemInterface
-{
+public abstract class DroppyMenuItemAbstract implements DroppyMenuItemInterface {
     final protected static int TYPE_MENU_ITEM = 0;
     final protected static int TYPE_CUSTOM = 1;
     final protected static int TYPE_MENU_SEPARATOR = 2;
@@ -27,7 +26,7 @@ public abstract class DroppyMenuItemAbstract implements DroppyMenuItemInterface
         if (this.renderedView == null) {
             this.renderedView = LayoutInflater.from(context).inflate(this.customViewResourceId, null);
         }
-        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         renderedView.setLayoutParams(lp);
 
         return renderedView;
