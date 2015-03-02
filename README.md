@@ -11,9 +11,9 @@ Buttton anchor = (Button) findViewById(R.id.button1);
 DroppyMenu.Builder droppyBuilder = new DroppyMenu.Builder(MyActivity.this, anchor);
         
 // Add normal items (text only)
-droppyBuilder.addMenuItem(new DroppyMenuItem("test1"));
-droppyBuilder.addMenuItem(new DroppyMenuItem("test2"));
-droppyBuilder.addSeparator();
+droppyBuilder.addMenuItem(new DroppyMenuItem("test1"))
+    .addMenuItem(new DroppyMenuItem("test2"))
+    .addSeparator();
         
 // Add Item with icon
 droppyBuilder.addMenuItem(new DroppyMenuItem("test3", R.drawable.ic_launcher));
