@@ -10,6 +10,9 @@ v.0.1 beta
 Usage
 =====
 
+Generate Programmatically
+=========================
+
 ```JAVA
 // Assume we have a button in our Layout as follows
 Buttton anchor = (Button) findViewById(R.id.button1);
@@ -42,6 +45,58 @@ DroppyMenu droppyMenu = droppyBuilder.build();
 // Alternatively you can call droppyMenu.show();
 ```
 
+Generate From Menu Resource (XML)
+=================================
+given: ```src/main/res/menu/droppy.xml```
+
+```XML
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.shehabic.droppy_samples.MainActivity">
+    <group android:enabled="true">
+        <item
+            android:id="@+id/dropp1"
+            android:title="Xml Item 1"
+            />
+
+        <item
+            android:id="@+id/droppy2"
+            android:title="Xml Item 2"
+            />
+    </group>
+    <group android:enabled="true">
+        <item
+            android:id="@+id/dropp3"
+            android:icon="@drawable/ic_launcher"
+            android:title="Xml Item 3"
+            />
+
+        <item
+            android:id="@+id/droppy4"
+            android:icon="@drawable/ic_launcher"
+            android:title="Xml Item 4"
+            />
+    </group>
+</menu>
+
+```
+
+We generate the menu as follows:
+
+```JAVA
+DroppyMenu droppyMenu;
+DroppyMenu.Builder droppyBuilder = new DroppyMenu.Builder(this, btn);
+DroppyMenu droppyMenu = droppyBuilder.fromMenu(R.menu.droppy)
+    .triggerOnAnchorClick(false)
+    .setOnClick(new DroppyClickCallbackInterface() {
+        @Override
+        public void call(View v, int id) {
+            Log.d("Id:", String.valueOf(id));
+        }
+    })
+    .build();
+droppyMenu.show();
+```
 
 How it looks like
 =================

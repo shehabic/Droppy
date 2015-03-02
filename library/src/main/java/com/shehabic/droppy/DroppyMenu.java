@@ -4,15 +4,20 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
+import android.support.v7.internal.view.menu.MenuBuilder;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -272,8 +277,49 @@ public class DroppyMenu {
             return this;
         }
 
+        public Builder fromMenu(int menuResourceId) {
+            Menu menu = newMenuInstance(ctx);
+            MenuInflater menuInflater = new MenuInflater(ctx);
+            menuInflater.inflate(menuResourceId, menu);
+            int lastGroupId = menu.getItem(0).getGroupId();
+            for (int i = 0; i < menu.size(); i++) {
+                MenuItem mItem = menu.getItem(i);
+                DroppyMenuItem dMenuItem = new DroppyMenuItem(mItem.getTitle().toString());
+
+                if (mItem.getIcon() != null) {
+                    dMenuItem.setIcon(mItem.getIcon());
+                }
+
+                if (mItem.getItemId() > 0) {
+                    dMenuItem.setId(mItem.getItemId());
+                }
+
+                if (mItem.getGroupId() != lastGroupId) {
+                    menuItems.add(new DroppyMenuSeparator());
+                    lastGroupId = mItem.getGroupId();
+                }
+
+                menuItems.add(dMenuItem);
+            }
+
+            return this;
+        }
+
+        private Menu newMenuInstance(Context context) {
+            try {
+                Class<?> menuBuilderClass = Class.forName("com.android.internal.view.menu.MenuBuilder");
+                Constructor<?> constructor = menuBuilderClass.getDeclaredConstructor(Context.class);
+                return (Menu) constructor.newInstance(context);
+            } catch (Exception e) {
+
+            }
+            return null;
+        }
+
         public DroppyMenu build() {
             return new DroppyMenu(ctx, parentMenuItem, menuItems, callbackInterface, triggerOnAnchorClick, -1);
         }
     }
 }
+
+

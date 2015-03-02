@@ -1,5 +1,6 @@
 package com.shehabic.droppy_samples;
 
+import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -70,8 +71,7 @@ public class MainActivity extends ActionBarActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                initDroppyMenu(btn3);
-                showDroppyMenu();
+                initDroppyMenuFromXml(btn3);
             }
         });
     }
@@ -97,6 +97,20 @@ public class MainActivity extends ActionBarActivity {
         droppyMenu = droppyBuilder.build();
     }
 
+    private void initDroppyMenuFromXml(Button btn)
+    {
+        DroppyMenu.Builder droppyBuilder = new DroppyMenu.Builder(this, btn);
+        DroppyMenu droppyMenu = droppyBuilder.fromMenu(R.menu.droppy)
+            .triggerOnAnchorClick(false)
+            .setOnClick(new DroppyClickCallbackInterface() {
+                @Override
+                public void call(View v, int id) {
+                    Log.d("Id:", String.valueOf(id));
+                }
+            })
+            .build();
+        droppyMenu.show();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

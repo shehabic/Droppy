@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.shehabic.droppy_samples.MainActivity">
+    <group android:enabled="true">
+        <item
+            android:id="@+id/dropp1"
+            android:title="Xml Item 1"
+            />
+
+        <item
+            android:id="@+id/droppy2"
+            android:title="Xml Item 2"
+            />
+    </group>
+    <group android:enabled="true">
+        <item
+            android:id="@+id/dropp3"
+            android:icon="@drawable/ic_launcher"
+            android:title="Xml Item 3"
+            />
+
+        <item
+            android:id="@+id/droppy4"
+            android:icon="@drawable/ic_launcher"
+            android:title="Xml Item 4"
+            />
+    </group>
+</menu>
