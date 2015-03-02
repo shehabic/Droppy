@@ -6,9 +6,7 @@ import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.view.Display;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -30,17 +28,14 @@ public class DroppyMenu {
     private View mPopupView;
     private DroppyClickCallbackInterface droppyClickCallbackInterface;
     private int popupMenuLayoutResourceId;
-    private int windowWidth = 0;
-    private int windowHeight = 0;
     private FrameLayout modalWindow;
-    private View.OnTouchListener mTouchInterceptor;
-    private Drawable mBackground;
 
     private DroppyMenu(
         Context mContext,
         View parentMenuItem,
         List<DroppyMenuItemInterface> menuItem,
         DroppyClickCallbackInterface droppyClickCallbackInterface,
+        boolean addTriggerOnAnchorClick,
         int popupMenuLayoutResourceId
     ) {
         this.mContext = mContext;
@@ -51,38 +46,33 @@ public class DroppyMenu {
             popupMenuLayoutResourceId = R.layout.droppy_menu;
         }
         this.popupMenuLayoutResourceId = popupMenuLayoutResourceId;
-        measureScreenDimensions();
         mWindowManager = (WindowManager) mContext.getSystemService(mContext.WINDOW_SERVICE);
-        mBackground = mContext.getResources().getDrawable(R.drawable.bt_bg_popupmenu);
+        if (addTriggerOnAnchorClick) {
+            anchor.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    show();
+                }
+            });
+        }
     }
 
     private Activity getActivity() {
         return (Activity) mContext;
     }
 
-    public View getMenuView()
-    {
+    public View getMenuView() {
         return mPopupView;
     }
 
-    public DroppyMenuItemInterface getMenuItemById(int id)
-    {
-        for (DroppyMenuItemInterface menuItem: menuItems)
-        {
+    public DroppyMenuItemInterface getMenuItemById(int id) {
+        for (DroppyMenuItemInterface menuItem : menuItems) {
             if (menuItem.getId() == id) {
                 return menuItem;
             }
         }
 
         return null;
-    }
-
-    public void measureScreenDimensions() {
-        Display display = getActivity().getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        windowWidth = size.x;
-        windowHeight = size.y;
     }
 
     public void addModal() {
@@ -252,6 +242,7 @@ public class DroppyMenu {
         private View parentMenuItem;
         private List<DroppyMenuItemInterface> menuItems = new ArrayList<DroppyMenuItemInterface>();
         private DroppyClickCallbackInterface callbackInterface;
+        private boolean triggerOnAnchorClick = true;
 
         public Builder(Context ctx, View parentMenuItem) {
             this.ctx = ctx;
@@ -276,8 +267,13 @@ public class DroppyMenu {
             return this;
         }
 
+        public Builder triggerOnAnchorClick(boolean onAnchorClick) {
+            triggerOnAnchorClick = onAnchorClick;
+            return this;
+        }
+
         public DroppyMenu build() {
-            return new DroppyMenu(ctx, parentMenuItem, menuItems, callbackInterface, -1);
+            return new DroppyMenu(ctx, parentMenuItem, menuItems, callbackInterface, triggerOnAnchorClick, -1);
         }
     }
 }

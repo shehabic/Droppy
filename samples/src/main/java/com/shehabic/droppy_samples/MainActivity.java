@@ -79,13 +79,15 @@ public class MainActivity extends ActionBarActivity {
     private void initDroppyMenu(Button btn)
     {
         DroppyMenu.Builder droppyBuilder = new DroppyMenu.Builder(this, btn);
-        droppyBuilder.addMenuItem(new DroppyMenuItem("test1"));
-        droppyBuilder.addMenuItem(new DroppyMenuItem("test2"));
-        droppyBuilder.addSeparator();
-        droppyBuilder.addMenuItem(new DroppyMenuItem("test3", R.drawable.ic_launcher));
+        droppyBuilder.addMenuItem(new DroppyMenuItem("test1"))
+            .addMenuItem(new DroppyMenuItem("test2"))
+            .addSeparator()
+            .addMenuItem(new DroppyMenuItem("test3", R.drawable.ic_launcher))
+            .triggerOnAnchorClick(false);
 
         DroppyMenuCustomView sBarItem = new DroppyMenuCustomView(R.layout.slider);
         droppyBuilder.addMenuItem(sBarItem);
+
         droppyBuilder.setOnClick(new DroppyClickCallbackInterface() {
             @Override
             public void call(View v, int id) {
