@@ -10,6 +10,10 @@ v.0.1 beta
 Usage
 =====
 
+For now you can add library module to your project like in the sample
+
+soon will be available for import directly in Maven/Graddle.
+
 Generate Programmatically
 =========================
 
