@@ -3,9 +3,6 @@ package com.shehabic.droppy;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
-import android.graphics.drawable.Drawable;
-import android.support.v7.internal.view.menu.MenuBuilder;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,15 +22,17 @@ import java.util.List;
  * Created by shehabic on 2/28/15.
  */
 public class DroppyMenu {
-    private WindowManager mWindowManager;
-    private Context mContext;
-    private View anchor;
-    private List<DroppyMenuItemInterface> menuItems = new ArrayList<DroppyMenuItemInterface>();
-    private View mContentView;
-    private View mPopupView;
-    private DroppyClickCallbackInterface droppyClickCallbackInterface;
-    private int popupMenuLayoutResourceId;
-    private FrameLayout modalWindow;
+    protected Context mContext;
+    protected View anchor;
+    protected List<DroppyMenuItemInterface> menuItems = new ArrayList<DroppyMenuItemInterface>();
+    protected View mContentView;
+    protected View mPopupView;
+    protected DroppyClickCallbackInterface droppyClickCallbackInterface;
+    protected int popupMenuLayoutResourceId;
+    protected FrameLayout modalWindow;
+    protected int mPopupWidth;
+    protected int mPopupHeight;
+    protected int statusBarHeight = -1;
 
     private DroppyMenu(
         Context mContext,
@@ -51,7 +50,6 @@ public class DroppyMenu {
             popupMenuLayoutResourceId = R.layout.droppy_menu;
         }
         this.popupMenuLayoutResourceId = popupMenuLayoutResourceId;
-        mWindowManager = (WindowManager) mContext.getSystemService(mContext.WINDOW_SERVICE);
         if (addTriggerOnAnchorClick) {
             anchor.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -62,7 +60,7 @@ public class DroppyMenu {
         }
     }
 
-    private Activity getActivity() {
+    protected Activity getActivity() {
         return (Activity) mContext;
     }
 
@@ -80,7 +78,7 @@ public class DroppyMenu {
         return null;
     }
 
-    public void addModal() {
+    protected void addModal() {
         FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         lp.leftMargin = 0;
         lp.topMargin = 0;
@@ -119,12 +117,12 @@ public class DroppyMenu {
         render(true);
     }
 
-    void render() {
+    protected void render() {
         render(false);
     }
 
-    void render(boolean forceRender) {
-        if (mPopupView == null || forceRender == true) {
+    protected void render(boolean forceRender) {
+        if (mPopupView == null || forceRender) {
             if (mPopupView != null && ((ViewGroup) mPopupView).getChildCount() > 0) {
                 ((ViewGroup) mPopupView).removeAllViews();
             }
@@ -143,16 +141,14 @@ public class DroppyMenu {
         mPopupHeight = mPopupView.getMeasuredHeight();
     }
 
-    void callOnClick(final View v, final int id) {
+    protected void callOnClick(final View v, final int id) {
         if (this.droppyClickCallbackInterface != null) {
-            FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) mPopupView.getLayoutParams();
-
             droppyClickCallbackInterface.call(v, id);
             dismiss();
         }
     }
 
-    void addMenuItemView(DroppyMenuItemInterface menuItem, final int id) {
+    protected void addMenuItemView(DroppyMenuItemInterface menuItem, final int id) {
         final View menuItemView = menuItem.render(mContext);
         if (menuItem.getId() == -1) {
             menuItem.setId(id);
@@ -168,13 +164,10 @@ public class DroppyMenu {
         ((ViewGroup) mPopupView.findViewById(R.id.droppyMenu)).addView(menuItemView);
     }
 
-    private int mPopupWidth;
-    private int mPopupHeight;
-    protected int statusBarHeight = -1;
-
     protected Point getScreenSize() {
         Point size = new Point();
         ((Activity) anchor.getContext()).getWindowManager().getDefaultDisplay().getSize(size);
+
         return size;
     }
 
@@ -182,13 +175,11 @@ public class DroppyMenu {
         Window w = ((Activity) anchor.getContext()).getWindow();
         WindowManager.LayoutParams lp = w.getAttributes();
         int flags = lp.flags;
-        if ((flags & WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS) == WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS) {
-            return true;
-        }
-        return false;
+
+        return (flags & WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS) == WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
     }
 
-    public int getStatusBarHeight() {
+    protected int getStatusBarHeight() {
         if (statusBarHeight == -1 && isTranslucentStatusBar()) {
             statusBarHeight = 0;
         } else if (statusBarHeight == -1) {
@@ -209,11 +200,7 @@ public class DroppyMenu {
         return new Point(coords[0], coords[1] - getStatusBarHeight());
     }
 
-    private void adjustDropDownPosition(FrameLayout.LayoutParams params) {
-        adjustDropDownPosition(params, 0, 0);
-    }
-
-    private void adjustDropDownPosition(FrameLayout.LayoutParams params, int xOffset, int yOffset) {
+    protected void adjustDropDownPosition(FrameLayout.LayoutParams params, int xOffset, int yOffset) {
         Point p = getAnchorCoordinates();
         int finalX = p.x + xOffset;
         final int anchorHeight = anchor.getHeight();
@@ -234,20 +221,18 @@ public class DroppyMenu {
         params.gravity = Gravity.LEFT | Gravity.TOP;
     }
 
-
-    private class PopupViewContainer extends FrameLayout {
+    protected class PopupViewContainer extends FrameLayout {
         public PopupViewContainer(Context context) {
             super(context);
         }
     }
 
-
     public static class Builder {
-        private Context ctx;
-        private View parentMenuItem;
-        private List<DroppyMenuItemInterface> menuItems = new ArrayList<DroppyMenuItemInterface>();
-        private DroppyClickCallbackInterface callbackInterface;
-        private boolean triggerOnAnchorClick = true;
+        protected Context ctx;
+        protected View parentMenuItem;
+        protected List<DroppyMenuItemInterface> menuItems = new ArrayList<DroppyMenuItemInterface>();
+        protected DroppyClickCallbackInterface callbackInterface;
+        protected boolean triggerOnAnchorClick = true;
 
         public Builder(Context ctx, View parentMenuItem) {
             this.ctx = ctx;
@@ -305,14 +290,16 @@ public class DroppyMenu {
             return this;
         }
 
-        private Menu newMenuInstance(Context context) {
+        protected Menu newMenuInstance(Context context) {
             try {
                 Class<?> menuBuilderClass = Class.forName("com.android.internal.view.menu.MenuBuilder");
                 Constructor<?> constructor = menuBuilderClass.getDeclaredConstructor(Context.class);
+
                 return (Menu) constructor.newInstance(context);
             } catch (Exception e) {
 
             }
+
             return null;
         }
 
