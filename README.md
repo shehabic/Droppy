@@ -11,12 +11,6 @@ Usage (Gradle)
 ==============
 
 ```
-repositories {
-    maven { url 'http://maven.shehabic.com' }
-}
-```
-
-```
 dependencies {
     compile 'com.shehabic.droppy:Droppy:0.1@aar'
 }
