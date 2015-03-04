@@ -19,10 +19,8 @@ Usage (Maven)
 
 Usage (Gradle)
 ==============
-```
-dependencies {
-    compile 'com.shehabic.droppy:Droppy:0.1@aar'
-}
+```groovy
+compile 'com.shehabic.droppy:Droppy:0.1@aar'
 ```
 
 Generate Programmatically
