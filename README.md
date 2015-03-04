@@ -7,9 +7,18 @@ Version
 =======
 v.0.1 beta
 
+Usage (Maven)
+=============
+```
+<dependency>
+  <groupId>com.shehabic.droppy</groupId>
+  <artifactId>Droppy</artifactId>
+  <version>0.1</version>
+</dependency>
+```
+
 Usage (Gradle)
 ==============
-
 ```
 dependencies {
     compile 'com.shehabic.droppy:Droppy:0.1@aar'
