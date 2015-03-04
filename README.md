@@ -12,7 +12,7 @@ Usage (Gradle)
 
 ```
 repositories {
-    maven { url 'http://serv.shehabic.com' }
+    maven { url 'http://maven.shehabic.com' }
 }
 ```
 
