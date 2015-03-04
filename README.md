@@ -7,12 +7,20 @@ Version
 =======
 v.0.1 beta
 
-Usage
-=====
+Usage (Gradle)
+==============
 
-For now you can add library module to your project like in the sample
+```
+repositories {
+    maven { url 'http://serv.shehabic.com' }
+}
+```
 
-soon will be available for import directly in Maven/Graddle.
+```
+dependencies {
+    compile 'com.shehabic.droppy:Droppy:0.1@aar'
+}
+```
 
 Generate Programmatically
 =========================
