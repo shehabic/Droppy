@@ -9,7 +9,7 @@ v.0.1 beta
 
 Usage (Maven)
 =============
-```
+```XML
 <dependency>
   <groupId>com.shehabic.droppy</groupId>
   <artifactId>Droppy</artifactId>
