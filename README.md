@@ -11,7 +11,7 @@ Usage (Maven)
 =============
 ```XML
 <dependency>
-  <groupId>com.shehabic</groupId>
+  <groupId>com.shehabic.droppy</groupId>
   <artifactId>Droppy</artifactId>
   <version>0.1</version>
 </dependency>
