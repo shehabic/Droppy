@@ -1,24 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme">
-        <!-- Customize your theme here. -->
+    <style name="Theme.DroppyDefaults" parent="android:Theme">
+        <item name="droppyPopupStyle">@style/Droppy.DroppyPopup</item>
+        <item name="droppyMenuStyle">@style/Droppy.DroppyMenu</item>
+        <item name="droppyMenuItemStyle">@style/Droppy.DroppyMenuItem</item>
+        <item name="droppyMenuItemTitleStyle">@style/Droppy.DroppyMenuItemTitle</item>
+        <item name="droppyMenuItemIconStyle">@style/Droppy.DroppyMenuItemIcon</item>
     </style>
 
-    <style name="DroppyMenuPopup">
+    <style name="Droppy">
+    </style>
+
+    <style name="Droppy.DroppyPopup">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/bt_bg_popupmenu</item>
     </style>
 
-    <style name="DroppyMenu">
+    <style name="Droppy.DroppyMenu">
         <item name="android:layout_margin">0dp</item>
         <item name="android:orientation">vertical</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="DroppyMenuSeparator">
+    <style name="Droppy.DroppyMenuSeparator">
         <item name="android:minWidth">120dp</item>
         <item name="android:minHeight">0.5dp</item>
         <item name="android:background">#BBBBBB</item>
@@ -29,7 +35,7 @@
         <item name="android:orientation">horizontal</item>
     </style>
 
-    <style name="DroppyMenuItem">
+    <style name="Droppy.DroppyMenuItem">
         <item name="android:minWidth">120dp</item>
         <item name="android:minHeight">30dp</item>
         <item name="android:layout_width">match_parent</item>
@@ -44,7 +50,7 @@
         <item name="android:background">@drawable/droppy_list_item_selector</item>
     </style>
 
-    <style name="DroppyMenuItemIcon">
+    <style name="Droppy.DroppyMenuItemIcon">
         <item name="android:maxWidth">32dp</item>
         <item name="android:maxHeight">32dp</item>
         <item name="android:layout_width">wrap_content</item>
@@ -53,7 +59,8 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="DroppyMenuItemTitle" parent="RtlOverlay.Widget.AppCompat.PopupMenuItem.Text">
+    <style name="Droppy.DroppyMenuItemTitle">
+        <item name="android:textColor">@color/darkgrey</item>
         <item name="android:minWidth">100dp</item>
         <item name="android:minHeight">30dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -62,5 +69,4 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:layout_weight">1</item>
     </style>
-
 </resources>

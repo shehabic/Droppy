@@ -1,7 +1,15 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+        <!--<item name="droppyPopupStyle">@style/Droppy.DroppyPopup</item>-->
+        <!--<item name="droppyMenuStyle">@style/Droppy.DroppyMenu</item>-->
+        <!--<item name="droppyMenuItemStyle">@style/Droppy.DroppyMenuItem</item>-->
+        <!--<item name="droppyMenuItemTitleStyle">@style/customMenuItemTitle</item>-->
+        <!--<item name="droppyMenuItemIconStyle">@style/Droppy.DroppyMenuItemIcon</item>-->
+    </style>
+
+
+    <style name="customMenuItemTitle" parent="Droppy.DroppyMenuItemTitle">
+        <item name="android:textColor">#FFAA3300</item>
     </style>
 </resources>

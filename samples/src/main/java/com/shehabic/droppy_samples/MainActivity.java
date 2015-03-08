@@ -1,6 +1,5 @@
 package com.shehabic.droppy_samples;
 
-import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,13 +10,13 @@ import android.widget.Button;
 import android.widget.SeekBar;
 
 import com.shehabic.droppy.DroppyClickCallbackInterface;
-import com.shehabic.droppy.DroppyMenu;
+import com.shehabic.droppy.DroppyMenuPopup;
 import com.shehabic.droppy.DroppyMenuCustomView;
 import com.shehabic.droppy.DroppyMenuItem;
 
 public class MainActivity extends ActionBarActivity {
 
-    DroppyMenu droppyMenu;
+    DroppyMenuPopup droppyMenu;
     Button btn;
     Button btn2;
     Button btn3;
@@ -78,7 +77,7 @@ public class MainActivity extends ActionBarActivity {
 
     private void initDroppyMenu(Button btn)
     {
-        DroppyMenu.Builder droppyBuilder = new DroppyMenu.Builder(this, btn);
+        DroppyMenuPopup.Builder droppyBuilder = new DroppyMenuPopup.Builder(this, btn);
         droppyBuilder.addMenuItem(new DroppyMenuItem("test1"))
             .addMenuItem(new DroppyMenuItem("test2"))
             .addSeparator()
@@ -99,8 +98,8 @@ public class MainActivity extends ActionBarActivity {
 
     private void initDroppyMenuFromXml(Button btn)
     {
-        DroppyMenu.Builder droppyBuilder = new DroppyMenu.Builder(this, btn);
-        DroppyMenu droppyMenu = droppyBuilder.fromMenu(R.menu.droppy)
+        DroppyMenuPopup.Builder droppyBuilder = new DroppyMenuPopup.Builder(this, btn);
+        DroppyMenuPopup droppyMenu = droppyBuilder.fromMenu(R.menu.droppy)
             .triggerOnAnchorClick(false)
             .setOnClick(new DroppyClickCallbackInterface() {
                 @Override
