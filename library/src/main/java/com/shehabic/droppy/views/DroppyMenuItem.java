@@ -39,8 +39,8 @@ public class DroppyMenuItem extends LinearLayout {
         ViewGroup.LayoutParams lp = getLayoutParams();
         setMinimumWidth((int) minWidth);
         setMinimumHeight((int) minHeight);
-        int width = a.getInteger(R.styleable.DroppyMenuItem_android_layout_height, ViewGroup.LayoutParams.WRAP_CONTENT);
-        int height = a.getInteger(R.styleable.DroppyMenuItem_android_layout_width, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int width = (int) a.getDimension(R.styleable.DroppyMenuItem_android_layout_height, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int height = (int) a.getDimension(R.styleable.DroppyMenuItem_android_layout_width, ViewGroup.LayoutParams.WRAP_CONTENT);
         if (lp == null) {
             lp = new ViewGroup.LayoutParams(width, height);
         } else {
@@ -50,10 +50,10 @@ public class DroppyMenuItem extends LinearLayout {
         setClickable(a.getBoolean(R.styleable.DroppyMenuItem_android_clickable, defaultIsClickable));
         setOrientation(LinearLayout.HORIZONTAL);
         setGravity(a.getInteger(R.styleable.DroppyMenuItem_android_gravity, Gravity.CENTER_VERTICAL));
-        int paddingTop = a.getInteger(R.styleable.DroppyMenuItem_android_paddingTop, (int) getResources().getDimension(R.dimen.default_menu_item_paddingTop));
-        int paddingBottom = a.getInteger(R.styleable.DroppyMenuItem_android_paddingBottom, (int) getResources().getDimension(R.dimen.default_menu_item_paddingBottom));
-        int paddingLeft = a.getInteger(R.styleable.DroppyMenuItem_android_paddingLeft, (int) getResources().getDimension(R.dimen.default_menu_item_paddingLeft));
-        int paddingRight = a.getInteger(R.styleable.DroppyMenuItem_android_paddingRight, (int) getResources().getDimension(R.dimen.default_menu_item_paddingRight));
+        int paddingTop = (int) a.getDimension(R.styleable.DroppyMenuItem_android_paddingTop, (int) getResources().getDimension(R.dimen.default_menu_item_paddingTop));
+        int paddingBottom = (int) a.getDimension(R.styleable.DroppyMenuItem_android_paddingBottom, (int) getResources().getDimension(R.dimen.default_menu_item_paddingBottom));
+        int paddingLeft = (int) a.getDimension(R.styleable.DroppyMenuItem_android_paddingLeft, (int) getResources().getDimension(R.dimen.default_menu_item_paddingLeft));
+        int paddingRight = (int) a.getDimension(R.styleable.DroppyMenuItem_android_paddingRight, (int) getResources().getDimension(R.dimen.default_menu_item_paddingRight));
         setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
 
         Drawable background = a.getDrawable(R.styleable.DroppyMenuItem_android_background);

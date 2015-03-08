@@ -26,7 +26,7 @@ public class DroppyMenuItemTitle extends TextView {
     public DroppyMenuItemTitle(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        final int defaultWidth = (int) getResources().getDimension(R.dimen.default_menu_item_title_layout_width);
+        final int defaultWidth = ViewGroup.LayoutParams.MATCH_PARENT;
         final int defaultMinWidth = (int) getResources().getDimension(R.dimen.default_menu_item_title_minWidth);
         final int defaultMinHeight = (int) getResources().getDimension(R.dimen.default_menu_item_title_minHeight);
         final float defaultWeight = 1;
@@ -37,8 +37,8 @@ public class DroppyMenuItemTitle extends TextView {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DroppyMenuItemTitle, defStyleAttr, 0);
         int minWidth = (int) a.getDimension(R.styleable.DroppyMenuItemTitle_android_minWidth, defaultMinWidth);
         int minHeight = (int) a.getDimension(R.styleable.DroppyMenuItemTitle_android_minHeight, defaultMinHeight);
-        int width = a.getInteger(R.styleable.DroppyMenuItemTitle_android_layout_width, defaultWidth);
-        int height = a.getInteger(R.styleable.DroppyMenuItemTitle_android_layout_height, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int width = (int) a.getDimension(R.styleable.DroppyMenuItemTitle_android_layout_width, defaultWidth);
+        int height = a.getInt(R.styleable.DroppyMenuItemTitle_android_layout_height, ViewGroup.LayoutParams.WRAP_CONTENT);
         int color = a.getColor(R.styleable.DroppyMenuItemTitle_android_textColor, defaultColor);
 
         setGravity(a.getInt(R.styleable.DroppyMenuItemTitle_android_gravity, defaultGravity));

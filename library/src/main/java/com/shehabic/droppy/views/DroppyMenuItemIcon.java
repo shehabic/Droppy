@@ -34,8 +34,8 @@ public class DroppyMenuItemIcon extends ImageView {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DroppyMenuItemIcon, defStyleAttr, 0);
         int maxWidth = (int) a.getDimension(R.styleable.DroppyMenuItemIcon_android_maxWidth, defaultMaxWidth);
         int maxHeight = (int) a.getDimension(R.styleable.DroppyMenuItemIcon_android_maxHeight, defaultMaxHeight);
-        int width = a.getInteger(R.styleable.DroppyMenuItemIcon_android_layout_width, ViewGroup.LayoutParams.WRAP_CONTENT);
-        int height = a.getInteger(R.styleable.DroppyMenuItemIcon_android_layout_height, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int width = (int) a.getDimension(R.styleable.DroppyMenuItemIcon_android_layout_width, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int height = (int) a.getDimension(R.styleable.DroppyMenuItemIcon_android_layout_height, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(width, height);
         lp.width = width;

@@ -61,7 +61,7 @@
 
     <style name="Droppy.DroppyMenuItemTitle">
         <item name="android:textColor">@color/darkgrey</item>
-        <item name="android:minWidth">100dp</item>
+        <item name="android:minWidth">128dp</item>
         <item name="android:minHeight">30dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">0dp</item>
