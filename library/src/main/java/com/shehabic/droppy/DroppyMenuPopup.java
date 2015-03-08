@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,6 +13,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
+import com.shehabic.droppy.views.DroppyMenuContainer;
+
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +22,13 @@ import java.util.List;
 /**
  * Created by shehabic on 2/28/15.
  */
-public class DroppyMenu {
+public class DroppyMenuPopup {
     protected Context mContext;
     protected View anchor;
     protected List<DroppyMenuItemInterface> menuItems = new ArrayList<DroppyMenuItemInterface>();
     protected View mContentView;
-    protected View mPopupView;
+    protected com.shehabic.droppy.views.DroppyMenuPopup mPopupView;
+    protected DroppyMenuContainer droppyMenuContainer;
     protected DroppyClickCallbackInterface droppyClickCallbackInterface;
     protected int popupMenuLayoutResourceId;
     protected FrameLayout modalWindow;
@@ -34,7 +36,7 @@ public class DroppyMenu {
     protected int mPopupHeight;
     protected int statusBarHeight = -1;
 
-    private DroppyMenu(
+    private DroppyMenuPopup(
         Context mContext,
         View parentMenuItem,
         List<DroppyMenuItemInterface> menuItem,
@@ -46,9 +48,6 @@ public class DroppyMenu {
         this.anchor = parentMenuItem;
         this.menuItems = menuItem;
         this.droppyClickCallbackInterface = droppyClickCallbackInterface;
-        if (popupMenuLayoutResourceId == -1) {
-            popupMenuLayoutResourceId = R.layout.droppy_menu;
-        }
         this.popupMenuLayoutResourceId = popupMenuLayoutResourceId;
         if (addTriggerOnAnchorClick) {
             anchor.setOnClickListener(new View.OnClickListener() {
@@ -126,7 +125,9 @@ public class DroppyMenu {
             if (mPopupView != null && ((ViewGroup) mPopupView).getChildCount() > 0) {
                 ((ViewGroup) mPopupView).removeAllViews();
             }
-            mPopupView = LayoutInflater.from(mContext).inflate(popupMenuLayoutResourceId, null);
+            mPopupView = new com.shehabic.droppy.views.DroppyMenuPopup(mContext);
+            droppyMenuContainer = new DroppyMenuContainer(mContext);
+            mPopupView.addView(droppyMenuContainer);
             FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             mPopupView.setLayoutParams(lp);
             mContentView = mPopupView;
@@ -161,7 +162,7 @@ public class DroppyMenu {
                 }
             });
         }
-        ((ViewGroup) mPopupView.findViewById(R.id.droppyMenu)).addView(menuItemView);
+        droppyMenuContainer.addView(menuItemView);
     }
 
     protected Point getScreenSize() {
@@ -303,8 +304,8 @@ public class DroppyMenu {
             return null;
         }
 
-        public DroppyMenu build() {
-            return new DroppyMenu(ctx, parentMenuItem, menuItems, callbackInterface, triggerOnAnchorClick, -1);
+        public DroppyMenuPopup build() {
+            return new DroppyMenuPopup(ctx, parentMenuItem, menuItems, callbackInterface, triggerOnAnchorClick, -1);
         }
     }
 }

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              style="@style/DroppyMenuItem">
+              style="@style/Droppy.DroppyMenuItem">
 
     <ImageView
-        style="@style/DroppyMenuItemIcon"
+        style="@style/Droppy.DroppyMenuItemIcon"
         android:id="@+id/icon"/>
 
     <TextView
         android:id="@+id/title"
-        style="@style/DroppyMenuItemTitle"/>
+        style="@style/Droppy.DroppyMenuItemTitle"/>
 </LinearLayout>

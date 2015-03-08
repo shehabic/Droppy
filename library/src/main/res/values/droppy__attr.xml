@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Droppy">
+        <attr name="droppyPopupStyle" format="reference"/>
+        <attr name="droppyMenuStyle" format="reference"/>
+        <attr name="droppyMenuItemStyle" format="reference"/>
+        <attr name="droppyMenuItemTitleStyle" format="reference"/>
+        <attr name="droppyMenuItemIconStyle" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="DroppyMenuPopup">
+        <attr name="android:layout_width"/>
+        <attr name="android:layout_height"/>
+        <attr name="android:background"/>
+    </declare-styleable>
+
+    <declare-styleable name="DroppyMenuContainer">
+        <attr name="android:layout_width"/>
+        <attr name="android:layout_height"/>
+        <attr name="android:orientation"/>
+    </declare-styleable>
+
+    <declare-styleable name="DroppyMenuItem">
+        <attr name="android:minWidth"/>
+        <attr name="android:minHeight"/>
+        <attr name="android:layout_width"/>
+        <attr name="android:layout_height"/>
+        <attr name="android:clickable"/>
+        <attr name="android:orientation"/>
+        <attr name="android:gravity"/>
+        <attr name="android:paddingTop"/>
+        <attr name="android:paddingBottom"/>
+        <attr name="android:paddingLeft"/>
+        <attr name="android:paddingRight"/>
+        <attr name="android:background"/>
+    </declare-styleable>
+
+    <declare-styleable name="DroppyMenuItemIcon">
+        <attr name="android:maxWidth"/>
+        <attr name="android:maxHeight"/>
+        <attr name="android:layout_width"/>
+        <attr name="android:layout_gravity"/>
+        <attr name="android:layout_weight"/>
+        <attr name="android:layout_height"/>
+    </declare-styleable>
+
+    <declare-styleable name="DroppyMenuItemTitle">
+        <attr name="android:textColor"/>
+        <attr name="android:minWidth"/>
+        <attr name="android:minHeight"/>
+        <attr name="android:layout_height"/>
+        <attr name="android:layout_width"/>
+        <attr name="android:layout_gravity"/>
+        <attr name="android:gravity"/>
+        <attr name="android:layout_weight"/>
+    </declare-styleable>
+</resources>
