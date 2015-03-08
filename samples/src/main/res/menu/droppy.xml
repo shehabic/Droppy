@@ -5,23 +5,25 @@
         <item
             android:id="@+id/dropp1"
             android:title="Xml Item 1"
+            android:icon="@drawable/droppy1"
             />
 
         <item
             android:id="@+id/droppy2"
             android:title="Xml Item 2"
+            android:icon="@drawable/droppy2"
             />
     </group>
     <group android:enabled="true">
         <item
             android:id="@+id/dropp3"
-            android:icon="@drawable/ic_launcher"
+            android:icon="@drawable/droppy3"
             android:title="Xml Item 3"
             />
 
         <item
             android:id="@+id/droppy4"
-            android:icon="@drawable/ic_launcher"
+            android:icon="@drawable/droppy4"
             android:title="Xml Item 4"
             />
     </group>

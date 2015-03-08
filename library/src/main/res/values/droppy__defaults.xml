@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Popup -->
+    <drawable name="default_popup_background">@drawable/bt_bg_popupmenu</drawable>
+
+    <!-- Menu -->
+
+    <!-- Menu Separator -->
+    <dimen name="default_menu_separator_height">0.5dp</dimen>
+    <dimen name="default_menu_separator_marginTop">3dp</dimen>
+    <dimen name="default_menu_separator_marginBottom">3dp</dimen>
+    <drawable name="default_menu_separator_background">@drawable/droppy_separator_background</drawable>
+    <!-- There's no easy way to define the following -->
+    <!--<attr name="android:orientation"/>-->
+
+    <!-- Menu Item -->
+    <dimen name="default_menu_item_minWidth">150dp</dimen>
+    <dimen name="default_menu_item_minHeight">48dp</dimen>
+    <bool name="default_menu_item_clickable">true</bool>
+    <dimen name="default_menu_item_paddingTop">2dp</dimen>
+    <dimen name="default_menu_item_paddingBottom">2dp</dimen>
+    <dimen name="default_menu_item_paddingLeft">5dp</dimen>
+    <dimen name="default_menu_item_paddingRight">5dp</dimen>
+    <drawable name="default_menu_item_background">@drawable/droppy_list_item_selector</drawable>
+
+    <!-- Mneu Item Icon -->
+    <dimen name="default_menu_item_icon_maxWidth">32dp</dimen>
+    <dimen name="default_menu_item_icon_maxHeight">32dp</dimen>
+    <dimen name="default_menu_item_icon_marginRight">5dp</dimen>
+    <dimen name="default_menu_item_icon_marginLeft">5dp</dimen>
+
+    <!-- There's no easy way to set default values for the following -->
+    <!--<item name="android:layout_gravity">start|center_vertical</item>-->
+    <!--<dimen name="default_menu_item_icon_layout_weight">0dp</dimen>-->
+
+
+    <!-- Menu Item Title -->
+    <color name="default_menu_item_title_textColor">@color/droppy_title_color</color>
+    <dimen name="default_menu_item_title_minWidth">128dp</dimen>
+    <dimen name="default_menu_item_title_minHeight">30dp</dimen>
+    <dimen name="default_menu_item_title_layout_width">0dp</dimen>
+
+
+    <!-- There's no easy way to set default values for the following -->
+    <!--<dimen name="default_menu_item_title_layout_weight">1dp</dimen>-->
+    <!--<item name="default_menu_item_title_layout_gravity">end|center_vertical</item>-->
+    <!--<item name="default_menu_item_title_gravity">center_vertical</item>-->
+</resources>

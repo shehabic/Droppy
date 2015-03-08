@@ -6,12 +6,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.shehabic.droppy.views.DroppyMenuItemIcon;
+import com.shehabic.droppy.views.DroppyMenuItemTitle;
+
 /**
  * Created by shehabic on 2/28/15.
  */
 public class DroppyMenuItem extends DroppyMenuItemAbstract {
 
     private Drawable iconDrawable;
+    protected com.shehabic.droppy.views.DroppyMenuItem renderedView;
 
     void initMenuItem(String title, int iconResourceId)
     {
@@ -19,7 +23,6 @@ public class DroppyMenuItem extends DroppyMenuItemAbstract {
         if (iconResourceId > 0) {
             this.icon = iconResourceId;
         }
-        this.customViewResourceId = R.layout.droppy_menu_item;
     }
 
     public DroppyMenuItem(String title)
@@ -40,15 +43,21 @@ public class DroppyMenuItem extends DroppyMenuItemAbstract {
 
     @Override
     public View render(Context context) {
-        super.render(context);
-
-        ((TextView) this.renderedView.findViewById(R.id.title)).setText(this.title);
+        
+        renderedView = new com.shehabic.droppy.views.DroppyMenuItem(context);
 
         if (this.icon != -1) {
-            ((ImageView) this.renderedView.findViewById(R.id.icon)).setImageResource(this.icon);
+            DroppyMenuItemIcon droppyMenuItemIcon = new DroppyMenuItemIcon(context);
+            droppyMenuItemIcon.setImageResource(this.icon);
         } else if (this.iconDrawable != null) {
-            ((ImageView) this.renderedView.findViewById(R.id.icon)).setImageDrawable(iconDrawable);
+            DroppyMenuItemIcon droppyMenuItemIcon = new DroppyMenuItemIcon(context);
+            droppyMenuItemIcon.setImageDrawable(iconDrawable);
+            renderedView.addView(droppyMenuItemIcon);
         }
+
+        DroppyMenuItemTitle droppyMenuItemTitle = new DroppyMenuItemTitle(context);
+        droppyMenuItemTitle.setText(this.title);
+        renderedView.addView(droppyMenuItemTitle);
 
         return renderedView;
     }
