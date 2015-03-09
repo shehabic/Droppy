@@ -18,7 +18,7 @@ public abstract class DroppyMenuItemAbstract implements DroppyMenuItemInterface 
     protected int type = TYPE_MENU_ITEM;
     protected View renderedView;
     protected int customViewResourceId = -1;
-    protected int id;
+    protected int id = -1;
     protected boolean isClickable = true;
 
     @Override

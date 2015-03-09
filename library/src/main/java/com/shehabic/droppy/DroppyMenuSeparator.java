@@ -10,7 +10,7 @@ public class DroppyMenuSeparator extends DroppyMenuItemAbstract {
     public DroppyMenuSeparator() {
         type = TYPE_MENU_SEPARATOR;
         setId(-1);
-        setClickable(false);
+        isClickable = false;
     }
 
     @Override

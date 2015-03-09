@@ -134,7 +134,9 @@ public class DroppyMenuPopup {
             int i = 0;
             for (DroppyMenuItemInterface droppyMenuItem : this.menuItems) {
                 addMenuItemView(droppyMenuItem, i);
-                i++;
+                if (droppyMenuItem.isClickable()) {
+                    i++;
+                }
             }
         }
         mPopupView.measure(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -151,14 +153,19 @@ public class DroppyMenuPopup {
 
     protected void addMenuItemView(DroppyMenuItemInterface menuItem, final int id) {
         final View menuItemView = menuItem.render(mContext);
-        if (menuItem.getId() == -1) {
-            menuItem.setId(id);
-        }
+
         if (menuItem.isClickable()) {
+
+            menuItemView.setId(id);
+            if (menuItem.getId() == -1) {
+                menuItem.setId(id);
+            }
+            final int clickableItemId = menuItem.getId();
+
             menuItemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    callOnClick(v, id);
+                    callOnClick(v, clickableItemId);
                 }
             });
         }
