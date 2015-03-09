@@ -26,7 +26,7 @@ public abstract class DroppyMenuItemAbstract implements DroppyMenuItemInterface 
         if (this.renderedView == null) {
             this.renderedView = LayoutInflater.from(context).inflate(this.customViewResourceId, null);
         }
-        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         renderedView.setLayoutParams(lp);
 
         return renderedView;

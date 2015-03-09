@@ -39,8 +39,8 @@ public class DroppyMenuItem extends LinearLayout {
         ViewGroup.LayoutParams lp = getLayoutParams();
         setMinimumWidth((int) minWidth);
         setMinimumHeight((int) minHeight);
-        int width = (int) a.getDimension(R.styleable.DroppyMenuItem_android_layout_height, ViewGroup.LayoutParams.WRAP_CONTENT);
-        int height = (int) a.getDimension(R.styleable.DroppyMenuItem_android_layout_width, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int width = a.getLayoutDimension(R.styleable.DroppyMenuItem_android_layout_width, ViewGroup.LayoutParams.MATCH_PARENT);
+        int height = a.getLayoutDimension(R.styleable.DroppyMenuItem_android_layout_height, ViewGroup.LayoutParams.WRAP_CONTENT);
         if (lp == null) {
             lp = new ViewGroup.LayoutParams(width, height);
         } else {

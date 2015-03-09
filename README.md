@@ -7,19 +7,20 @@ Version
 =======
 v.0.1 beta
 
+Usage (Maven)
+=============
+```XML
+<dependency>
+  <groupId>com.shehabic.droppy</groupId>
+  <artifactId>Droppy</artifactId>
+  <version>0.1</version>
+</dependency>
+```
+
 Usage (Gradle)
 ==============
-
-```
-repositories {
-    maven { url 'http://maven.shehabic.com' }
-}
-```
-
-```
-dependencies {
-    compile 'com.shehabic.droppy:Droppy:0.1@aar'
-}
+```groovy
+compile 'com.shehabic.droppy:Droppy:0.1@aar'
 ```
 
 Generate Programmatically

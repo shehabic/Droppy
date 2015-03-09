@@ -3,6 +3,7 @@
     <declare-styleable name="Droppy">
         <attr name="droppyPopupStyle" format="reference"/>
         <attr name="droppyMenuStyle" format="reference"/>
+        <attr name="droppyMenuSeparatorStyle" format="reference"/>
         <attr name="droppyMenuItemStyle" format="reference"/>
         <attr name="droppyMenuItemTitleStyle" format="reference"/>
         <attr name="droppyMenuItemIconStyle" format="reference"/>
@@ -17,6 +18,15 @@
     <declare-styleable name="DroppyMenuContainer">
         <attr name="android:layout_width"/>
         <attr name="android:layout_height"/>
+        <attr name="android:orientation"/>
+    </declare-styleable>
+
+    <declare-styleable name="DroppyMenuSeparator">
+        <attr name="android:background"/>
+        <attr name="android:layout_height"/>
+        <attr name="android:layout_width"/>
+        <attr name="android:layout_marginTop"/>
+        <attr name="android:layout_marginBottom"/>
         <attr name="android:orientation"/>
     </declare-styleable>
 
@@ -42,6 +52,8 @@
         <attr name="android:layout_gravity"/>
         <attr name="android:layout_weight"/>
         <attr name="android:layout_height"/>
+        <attr name="android:layout_marginLeft" />
+        <attr name="android:layout_marginRight" />
     </declare-styleable>
 
     <declare-styleable name="DroppyMenuItemTitle">
@@ -54,4 +66,6 @@
         <attr name="android:gravity"/>
         <attr name="android:layout_weight"/>
     </declare-styleable>
+
+
 </resources>
