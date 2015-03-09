@@ -11,16 +11,16 @@ Usage (Maven)
 =============
 ```XML
 <dependency>
-  <groupId>com.shehabic.droppy</groupId>
-  <artifactId>Droppy</artifactId>
-  <version>0.1</version>
+    <groupId>com.shehabic.droppy</groupId>
+    <artifactId>Droppy</artifactId>
+    <version>0.2.1</version>
 </dependency>
 ```
 
 Usage (Gradle)
 ==============
 ```groovy
-compile 'com.shehabic.droppy:Droppy:0.1@aar'
+compile 'com.shehabic.droppy:Droppy:0.2.1'
 ```
 
 Generate Programmatically
