@@ -23,7 +23,6 @@ public class DroppyMenuItem extends DroppyMenuItemAbstract {
         if (iconResourceId > 0) {
             this.icon = iconResourceId;
         }
-        this.customViewResourceId = R.layout.droppy_menu_item;
     }
 
     public DroppyMenuItem(String title)
@@ -44,8 +43,7 @@ public class DroppyMenuItem extends DroppyMenuItemAbstract {
 
     @Override
     public View render(Context context) {
-        super.render(context);
-
+        
         renderedView = new com.shehabic.droppy.views.DroppyMenuItem(context);
 
         if (this.icon != -1) {

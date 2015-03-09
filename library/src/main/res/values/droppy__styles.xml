@@ -25,13 +25,9 @@
     </style>
 
     <style name="Droppy.DroppyMenuSeparator">
-        <item name="android:minWidth">120dp</item>
-        <item name="android:minHeight">0.5dp</item>
-        <item name="android:background">#BBBBBB</item>
+        <item name="android:background">@drawable/droppy_separator_background</item>
         <item name="android:layout_height">0.5dp</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_marginTop">3dp</item>
-        <item name="android:layout_marginBottom">3dp</item>
         <item name="android:orientation">horizontal</item>
     </style>
 
@@ -57,10 +53,12 @@
         <item name="android:layout_gravity">start|center_vertical</item>
         <item name="android:layout_weight">0</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
     </style>
 
     <style name="Droppy.DroppyMenuItemTitle">
-        <item name="android:textColor">@color/darkgrey</item>
+        <item name="android:textColor">@color/droppy_title_color</item>
         <item name="android:minWidth">128dp</item>
         <item name="android:minHeight">30dp</item>
         <item name="android:layout_height">wrap_content</item>

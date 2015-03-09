@@ -28,8 +28,8 @@ public class DroppyMenuPopup extends FrameLayout
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DroppyMenuPopup, defStyleAttr, 0);
         Drawable background = a.getDrawable(R.styleable.DroppyMenuPopup_android_background);
-        int height = (int) a.getDimension(R.styleable.DroppyMenuPopup_android_layout_height, ViewGroup.LayoutParams.WRAP_CONTENT);
-        int width = (int) a.getDimension(R.styleable.DroppyMenuPopup_android_layout_width, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int height = a.getLayoutDimension(R.styleable.DroppyMenuPopup_android_layout_height, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int width = a.getLayoutDimension(R.styleable.DroppyMenuPopup_android_layout_width, ViewGroup.LayoutParams.WRAP_CONTENT);
         ViewGroup.LayoutParams lp = getLayoutParams();
         if (lp == null) {
             lp = new ViewGroup.LayoutParams(width, height);

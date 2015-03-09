@@ -37,8 +37,8 @@ public class DroppyMenuItemTitle extends TextView {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DroppyMenuItemTitle, defStyleAttr, 0);
         int minWidth = (int) a.getDimension(R.styleable.DroppyMenuItemTitle_android_minWidth, defaultMinWidth);
         int minHeight = (int) a.getDimension(R.styleable.DroppyMenuItemTitle_android_minHeight, defaultMinHeight);
-        int width = (int) a.getDimension(R.styleable.DroppyMenuItemTitle_android_layout_width, defaultWidth);
-        int height = a.getInt(R.styleable.DroppyMenuItemTitle_android_layout_height, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int width = a.getLayoutDimension(R.styleable.DroppyMenuItemTitle_android_layout_width, defaultWidth);
+        int height = a.getLayoutDimension(R.styleable.DroppyMenuItemTitle_android_layout_height, ViewGroup.LayoutParams.WRAP_CONTENT);
         int color = a.getColor(R.styleable.DroppyMenuItemTitle_android_textColor, defaultColor);
 
         setGravity(a.getInt(R.styleable.DroppyMenuItemTitle_android_gravity, defaultGravity));
