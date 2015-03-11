@@ -111,6 +111,35 @@ DroppyMenu droppyMenu = droppyBuilder.fromMenu(R.menu.droppy)
 droppyMenu.show();
 ```
 
+Customizing Syles
+=================
+```XML
+    <style name="YourAppTheme" parent="Whatever.Parent.Theme.You.Are.Extending">
+        <item name="droppyPopupStyle">@style/Your.Custom.DroppyPopup</item>
+        <item name="droppyMenuStyle">@style/Your.Custom.DroppyMenu</item>
+        <item name="droppyMenuItemStyle">@style/Your.Custom.DroppyMenuItem</item>
+        <item name="droppyMenuItemTitleStyle">@style/Your.Custom.DroppyMenuItemTitle</item>
+        <item name="droppyMenuItemIconStyle">@style/Your.Custom.DroppyMenuItemIcon</item>
+    </style>
+    
+    <!-- Your custom styles go here -->
+    <style name="Your.Custom.DroppyPopup" parent="Droppy.DroppyPopup">
+        <!-- Your Custom style attributes go here -->
+    </style>
+    <style name="Your.Custom.DroppyMenu" parent="Droppy.DroppyMenu">
+        <!-- Your Custom style attributes go here -->
+    </style>
+    <style name="Your.Custom.DroppyMenuItem" parent="Droppy.DroppyMenuItem">
+        <!-- Your Custom style attributes go here -->
+    </style>
+    <style name="Your.Custom.DroppyMenuItemTitle" parent="Droppy.DroppyMenuItemTitle">
+        <!-- Your Custom style attributes go here -->
+    </style>
+    <style name="Your.Custom.DroppyMenuItemIcon" parent="Droppy.DroppyMenuItemIcon">
+        <!-- Your Custom style attributes go here -->
+    </style>
+```
+
 How it looks like
 =================
 ![](https://raw.githubusercontent.com/shehabic/Droppy/screenshots/Droppy_Screenshot.png)
