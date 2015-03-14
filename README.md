@@ -1,3 +1,5 @@
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Droppy-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1648)
+
 Droppy
 ======
 
