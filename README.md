@@ -22,7 +22,7 @@ Usage (Maven)
 Usage (Gradle)
 ==============
 ```groovy
-compile 'com.shehabic.droppy:Droppy:0.2.1'
+compile 'com.shehabic.droppy:Droppy:0.2.1@aar'
 ```
 
 Generate Programmatically
