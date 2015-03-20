@@ -32,7 +32,7 @@ Generate Programmatically
 // Assume we have a button in our Layout as follows
 Buttton anchor = (Button) findViewById(R.id.button1);
 
-DroppyMenu.Builder droppyBuilder = new DroppyMenu.Builder(MyActivity.this, anchor);
+DroppyMenuPopup.Builder droppyBuilder = new DroppyMenuPopup.Builder(MyActivity.this, anchor);
 
 // Add normal items (text only)
 droppyBuilder.addMenuItem(new DroppyMenuItem("test1"))
@@ -54,7 +54,7 @@ droppyBuilder.setOnClick(new DroppyClickCallbackInterface() {
     }
 });
         
-DroppyMenu droppyMenu = droppyBuilder.build();
+DroppyMenuPopup droppyMenu = droppyBuilder.build();
 
 // Then once you click on the button it'll show
 // Alternatively you can call droppyMenu.show();
@@ -99,9 +99,9 @@ given: ```src/main/res/menu/droppy.xml```
 We generate the menu as follows:
 
 ```JAVA
-DroppyMenu droppyMenu;
-DroppyMenu.Builder droppyBuilder = new DroppyMenu.Builder(this, btn);
-DroppyMenu droppyMenu = droppyBuilder.fromMenu(R.menu.droppy)
+DroppyMenuPopup droppyMenu;
+DroppyMenuPopup.Builder droppyBuilder = new DroppyMenuPopup.Builder(this, btn);
+DroppyMenuPopup droppyMenu = droppyBuilder.fromMenu(R.menu.droppy)
     .triggerOnAnchorClick(false)
     .setOnClick(new DroppyClickCallbackInterface() {
         @Override
