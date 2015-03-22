@@ -13,17 +13,17 @@ import com.shehabic.droppy.R;
 /**
  * Created by shehabic on 3/7/15.
  */
-public class DroppyMenuItemTitle extends TextView {
+public class DroppyMenuItemTitleView extends TextView {
 
-    public DroppyMenuItemTitle(Context context) {
+    public DroppyMenuItemTitleView(Context context) {
         this(context, null);
     }
 
-    public DroppyMenuItemTitle(Context context, AttributeSet attrs) {
+    public DroppyMenuItemTitleView(Context context, AttributeSet attrs) {
         this(context, attrs, R.attr.droppyMenuItemTitleStyle);
     }
 
-    public DroppyMenuItemTitle(Context context, AttributeSet attrs, int defStyleAttr) {
+    public DroppyMenuItemTitleView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         final int defaultWidth = ViewGroup.LayoutParams.MATCH_PARENT;
@@ -34,20 +34,20 @@ public class DroppyMenuItemTitle extends TextView {
         final int defaultGravity = Gravity.CENTER_VERTICAL;
         final int defaultLayoutGravity = Gravity.END | Gravity.CENTER_VERTICAL;
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DroppyMenuItemTitle, defStyleAttr, 0);
-        int minWidth = (int) a.getDimension(R.styleable.DroppyMenuItemTitle_android_minWidth, defaultMinWidth);
-        int minHeight = (int) a.getDimension(R.styleable.DroppyMenuItemTitle_android_minHeight, defaultMinHeight);
-        int width = a.getLayoutDimension(R.styleable.DroppyMenuItemTitle_android_layout_width, defaultWidth);
-        int height = a.getLayoutDimension(R.styleable.DroppyMenuItemTitle_android_layout_height, ViewGroup.LayoutParams.WRAP_CONTENT);
-        int color = a.getColor(R.styleable.DroppyMenuItemTitle_android_textColor, defaultColor);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DroppyMenuItemTitleView, defStyleAttr, 0);
+        int minWidth = (int) a.getDimension(R.styleable.DroppyMenuItemTitleView_android_minWidth, defaultMinWidth);
+        int minHeight = (int) a.getDimension(R.styleable.DroppyMenuItemTitleView_android_minHeight, defaultMinHeight);
+        int width = a.getLayoutDimension(R.styleable.DroppyMenuItemTitleView_android_layout_width, defaultWidth);
+        int height = a.getLayoutDimension(R.styleable.DroppyMenuItemTitleView_android_layout_height, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int color = a.getColor(R.styleable.DroppyMenuItemTitleView_android_textColor, defaultColor);
 
-        setGravity(a.getInt(R.styleable.DroppyMenuItemTitle_android_gravity, defaultGravity));
+        setGravity(a.getInt(R.styleable.DroppyMenuItemTitleView_android_gravity, defaultGravity));
 
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(width, height);
         lp.width = width;
         lp.height = height;
-        lp.weight = a.getFloat(R.styleable.DroppyMenuItemTitle_android_layout_weight, defaultWeight);
-        lp.gravity = a.getInteger(R.styleable.DroppyMenuItemTitle_android_layout_gravity, defaultLayoutGravity);
+        lp.weight = a.getFloat(R.styleable.DroppyMenuItemTitleView_android_layout_weight, defaultWeight);
+        lp.gravity = a.getInteger(R.styleable.DroppyMenuItemTitleView_android_layout_gravity, defaultLayoutGravity);
 
         setLayoutParams(lp);
         setMinHeight(minWidth);

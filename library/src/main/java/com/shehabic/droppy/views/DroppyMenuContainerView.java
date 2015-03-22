@@ -11,23 +11,23 @@ import com.shehabic.droppy.R;
 /**
  * Created by shehabic on 3/6/15.
  */
-public class DroppyMenuContainer extends LinearLayout
+public class DroppyMenuContainerView extends LinearLayout
 {
-    public DroppyMenuContainer(Context context) {
+    public DroppyMenuContainerView(Context context) {
         this(context, null);
     }
 
-    public DroppyMenuContainer(Context context, AttributeSet attrs) {
+    public DroppyMenuContainerView(Context context, AttributeSet attrs) {
         this(context, attrs, R.attr.droppyMenuStyle);
     }
 
-    public DroppyMenuContainer(Context context, AttributeSet attrs, int defStyleAttr) {
+    public DroppyMenuContainerView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.setOrientation(VERTICAL);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DroppyMenuPopup, defStyleAttr, 0);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DroppyMenuPopupView, defStyleAttr, 0);
         ViewGroup.LayoutParams lp = getLayoutParams();
-        int height = a.getLayoutDimension(R.styleable.DroppyMenuContainer_android_layout_height, ViewGroup.LayoutParams.WRAP_CONTENT);
-        int width = a.getLayoutDimension(R.styleable.DroppyMenuContainer_android_layout_width, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int height = a.getLayoutDimension(R.styleable.DroppyMenuContainerView_android_layout_height, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int width = a.getLayoutDimension(R.styleable.DroppyMenuContainerView_android_layout_width, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         if (lp == null) {
             lp = new ViewGroup.LayoutParams(width, height);

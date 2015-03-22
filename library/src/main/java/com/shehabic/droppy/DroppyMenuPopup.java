@@ -13,7 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
-import com.shehabic.droppy.views.DroppyMenuContainer;
+import com.shehabic.droppy.views.DroppyMenuContainerView;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -27,8 +27,8 @@ public class DroppyMenuPopup {
     protected View anchor;
     protected List<DroppyMenuItemInterface> menuItems = new ArrayList<DroppyMenuItemInterface>();
     protected View mContentView;
-    protected com.shehabic.droppy.views.DroppyMenuPopup mPopupView;
-    protected DroppyMenuContainer droppyMenuContainer;
+    protected com.shehabic.droppy.views.DroppyMenuPopupView mPopupView;
+    protected DroppyMenuContainerView droppyMenuContainer;
     protected DroppyClickCallbackInterface droppyClickCallbackInterface;
     protected int popupMenuLayoutResourceId;
     protected FrameLayout modalWindow;
@@ -100,6 +100,7 @@ public class DroppyMenuPopup {
         FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         adjustDropDownPosition(lp, -20, 30);
         mContentView = new PopupViewContainer(mContext);
+        detachPopupView();
         ((ViewGroup) mContentView).addView(mPopupView);
         mContentView.setFocusable(true);
         mContentView.setClickable(true);
@@ -107,13 +108,20 @@ public class DroppyMenuPopup {
         mContentView.requestFocus();
     }
 
+    protected void detachPopupView()
+    {
+        if (mPopupView.getParent() != null) {
+            try {
+                ((ViewGroup) mPopupView.getParent()).removeView(mPopupView);
+            } catch (Exception e) {
+
+            }
+        }
+    }
+
     public void dismiss() {
         ((ViewGroup) mContentView.getParent()).removeView(mContentView);
         ((ViewGroup) modalWindow.getParent()).removeView(modalWindow);
-    }
-
-    public void notifyChange() {
-        render(true);
     }
 
     protected void render() {
@@ -125,8 +133,8 @@ public class DroppyMenuPopup {
             if (mPopupView != null && ((ViewGroup) mPopupView).getChildCount() > 0) {
                 ((ViewGroup) mPopupView).removeAllViews();
             }
-            mPopupView = new com.shehabic.droppy.views.DroppyMenuPopup(mContext);
-            droppyMenuContainer = new DroppyMenuContainer(mContext);
+            mPopupView = new com.shehabic.droppy.views.DroppyMenuPopupView(mContext);
+            droppyMenuContainer = new DroppyMenuContainerView(mContext);
             mPopupView.addView(droppyMenuContainer);
             FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             mPopupView.setLayoutParams(lp);

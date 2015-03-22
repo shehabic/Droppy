@@ -10,10 +10,13 @@ import android.widget.Button;
 import android.widget.SeekBar;
 
 import com.shehabic.droppy.DroppyClickCallbackInterface;
+import com.shehabic.droppy.DroppyMenuCustomItem;
 import com.shehabic.droppy.DroppyMenuPopup;
-import com.shehabic.droppy.DroppyMenuCustomView;
 import com.shehabic.droppy.DroppyMenuItem;
 
+/**
+ * Created by shehabic on 3/21/15.
+ */
 public class MainActivity extends ActionBarActivity {
 
     DroppyMenuPopup droppyMenu;
@@ -84,7 +87,7 @@ public class MainActivity extends ActionBarActivity {
             .addMenuItem(new DroppyMenuItem("test3", R.drawable.ic_launcher))
             .triggerOnAnchorClick(false);
 
-        DroppyMenuCustomView sBarItem = new DroppyMenuCustomView(R.layout.slider);
+        DroppyMenuCustomItem sBarItem = new DroppyMenuCustomItem(R.layout.slider);
         droppyBuilder.addMenuItem(sBarItem);
 
         droppyBuilder.setOnClick(new DroppyClickCallbackInterface() {
@@ -133,4 +136,3 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 }
-

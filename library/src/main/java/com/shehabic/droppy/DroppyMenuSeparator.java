@@ -16,7 +16,7 @@ public class DroppyMenuSeparator extends DroppyMenuItemAbstract {
     @Override
     public View render(Context context) {
         if (renderedView == null) {
-            renderedView = new com.shehabic.droppy.views.DroppyMenuSeparator(context);
+            renderedView = new com.shehabic.droppy.views.DroppyMenuSeparatorView(context);
         }
 
         return renderedView;

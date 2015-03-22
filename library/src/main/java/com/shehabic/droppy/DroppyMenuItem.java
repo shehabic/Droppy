@@ -3,11 +3,9 @@ package com.shehabic.droppy;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.shehabic.droppy.views.DroppyMenuItemIcon;
-import com.shehabic.droppy.views.DroppyMenuItemTitle;
+import com.shehabic.droppy.views.DroppyMenuItemIconView;
+import com.shehabic.droppy.views.DroppyMenuItemTitleView;
 
 /**
  * Created by shehabic on 2/28/15.
@@ -15,7 +13,7 @@ import com.shehabic.droppy.views.DroppyMenuItemTitle;
 public class DroppyMenuItem extends DroppyMenuItemAbstract {
 
     private Drawable iconDrawable;
-    protected com.shehabic.droppy.views.DroppyMenuItem renderedView;
+    protected com.shehabic.droppy.views.DroppyMenuItemView renderedView;
 
     void initMenuItem(String title, int iconResourceId)
     {
@@ -44,18 +42,18 @@ public class DroppyMenuItem extends DroppyMenuItemAbstract {
     @Override
     public View render(Context context) {
         
-        renderedView = new com.shehabic.droppy.views.DroppyMenuItem(context);
+        renderedView = new com.shehabic.droppy.views.DroppyMenuItemView(context);
 
         if (this.icon != -1) {
-            DroppyMenuItemIcon droppyMenuItemIcon = new DroppyMenuItemIcon(context);
+            DroppyMenuItemIconView droppyMenuItemIcon = new DroppyMenuItemIconView(context);
             droppyMenuItemIcon.setImageResource(this.icon);
         } else if (this.iconDrawable != null) {
-            DroppyMenuItemIcon droppyMenuItemIcon = new DroppyMenuItemIcon(context);
+            DroppyMenuItemIconView droppyMenuItemIcon = new DroppyMenuItemIconView(context);
             droppyMenuItemIcon.setImageDrawable(iconDrawable);
             renderedView.addView(droppyMenuItemIcon);
         }
 
-        DroppyMenuItemTitle droppyMenuItemTitle = new DroppyMenuItemTitle(context);
+        DroppyMenuItemTitleView droppyMenuItemTitle = new DroppyMenuItemTitleView(context);
         droppyMenuItemTitle.setText(this.title);
         renderedView.addView(droppyMenuItemTitle);
 
