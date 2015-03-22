@@ -7,7 +7,7 @@ A simple yet-customizable Android drop-down menu. It supports Text with/without 
 
 Version
 =======
-v.0.2.1
+v.0.2.5
 
 Usage (Maven)
 =============

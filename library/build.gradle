@@ -7,8 +7,8 @@ android {
     defaultConfig {
         minSdkVersion 13
         targetSdkVersion 21
-        versionCode 3
-        versionName "0.2.1"
+        versionCode 4
+        versionName "0.2.5"
     }
     buildTypes {
         release {
@@ -32,7 +32,7 @@ def groupId = project.PUBLISH_GROUP_ID
 def artifactId = project.PUBLISH_ARTIFACT_ID
 def version = project.PUBLISH_VERSION
 
-def localReleaseDest = "file:///Users/shehabic/android/maven"
+def localReleaseDest = "file:///android/maven"
 
 task androidJavadocs(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
