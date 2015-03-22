@@ -7,7 +7,7 @@ A simple yet-customizable Android drop-down menu. It supports Text with/without 
 
 Version
 =======
-v.0.2.1
+v.0.2.5
 
 Usage (Maven)
 =============
@@ -150,15 +150,23 @@ Why not the native PopupMenu?
 =============================
 Well if you have struggled long enough trying to show an icon beside the text in the normal popup menu or wanted to created a simple popup with custom view yest still contextual to an exisitng view, you would've know that it was almost impossible to do with the normal popup menu unless you use reflection and hack a the internal properties for PopupMenu and yet just add extra icon but not a fully customized view.
 
+Reporting Bug / Opening Issues
+==============================
+  1-Please first make sure the issue you're reporting doesn't already exists to avoid duplicates.
+  2-Please make sure you specify enough info if possible, including Target and Minimum SDK used, and portion of the code in addition to the stack trace/error message in case of errors.
+
+Forks / Pull Request
+====================
+  As per the license you're free to fork the lib, and modify as you
+  Pull-request for enhancements and bug-fixes ar always welcomed
+
 Developed By
 ============
-
 * Mohamed Shehab - <shehabic@gmail.com>
 
 
 License
 =======
-
     Copyright 2015 Mohamed Shehab
 
     Licensed under the Apache License, Version 2.0 (the "License");

@@ -4,4 +4,10 @@
 
     <string name="click_me">Click me</string>
     <string name="action_settings">Settings</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_activity_with_fragment">ActivityWithFragment</string>
+    <string name="hello_world">Hello world!</string>
 </resources>

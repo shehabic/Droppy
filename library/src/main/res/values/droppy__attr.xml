@@ -9,19 +9,19 @@
         <attr name="droppyMenuItemIconStyle" format="reference"/>
     </declare-styleable>
 
-    <declare-styleable name="DroppyMenuPopup">
+    <declare-styleable name="DroppyMenuPopupView">
         <attr name="android:layout_width"/>
         <attr name="android:layout_height"/>
         <attr name="android:background"/>
     </declare-styleable>
 
-    <declare-styleable name="DroppyMenuContainer">
+    <declare-styleable name="DroppyMenuContainerView">
         <attr name="android:layout_width"/>
         <attr name="android:layout_height"/>
         <attr name="android:orientation"/>
     </declare-styleable>
 
-    <declare-styleable name="DroppyMenuSeparator">
+    <declare-styleable name="DroppyMenuSeparatorView">
         <attr name="android:background"/>
         <attr name="android:layout_height"/>
         <attr name="android:layout_width"/>
@@ -30,7 +30,7 @@
         <attr name="android:orientation"/>
     </declare-styleable>
 
-    <declare-styleable name="DroppyMenuItem">
+    <declare-styleable name="DroppyMenuItemView">
         <attr name="android:minWidth"/>
         <attr name="android:minHeight"/>
         <attr name="android:layout_width"/>
@@ -45,7 +45,7 @@
         <attr name="android:background"/>
     </declare-styleable>
 
-    <declare-styleable name="DroppyMenuItemIcon">
+    <declare-styleable name="DroppyMenuItemIconView">
         <attr name="android:maxWidth"/>
         <attr name="android:maxHeight"/>
         <attr name="android:layout_width"/>
@@ -56,7 +56,7 @@
         <attr name="android:layout_marginRight" />
     </declare-styleable>
 
-    <declare-styleable name="DroppyMenuItemTitle">
+    <declare-styleable name="DroppyMenuItemTitleView">
         <attr name="android:textColor"/>
         <attr name="android:minWidth"/>
         <attr name="android:minHeight"/>

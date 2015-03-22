@@ -7,15 +7,15 @@ import android.view.View;
 /**
  * Created by shehabic on 3/1/15.
  */
-public class DroppyMenuCustomView extends DroppyMenuItemAbstract {
+public class DroppyMenuCustomItem extends DroppyMenuItemAbstract {
 
-    public DroppyMenuCustomView(int customResourceId){
+    public DroppyMenuCustomItem(int customResourceId){
         isClickable = false;
         type = TYPE_CUSTOM;
         customViewResourceId = customResourceId;
     }
 
-    public DroppyMenuCustomView(View customView){
+    public DroppyMenuCustomItem(View customView){
         isClickable = false;
         type = TYPE_CUSTOM;
         renderedView = customView;

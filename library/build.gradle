@@ -5,10 +5,10 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 13
         targetSdkVersion 21
-        versionCode 3
-        versionName "0.2.1"
+        versionCode 4
+        versionName "0.2.5"
     }
     buildTypes {
         release {
@@ -21,7 +21,7 @@ android {
 ext {
     PUBLISH_GROUP_ID = 'com.shehabic.droppy'
     PUBLISH_ARTIFACT_ID = 'Droppy'
-    PUBLISH_VERSION = '0.2.1'
+    PUBLISH_VERSION = '0.2.5'
 }
 
 
@@ -32,7 +32,7 @@ def groupId = project.PUBLISH_GROUP_ID
 def artifactId = project.PUBLISH_ARTIFACT_ID
 def version = project.PUBLISH_VERSION
 
-def localReleaseDest = "file:///Users/shehabic/android/maven"
+def localReleaseDest = "file:///android/maven"
 
 task androidJavadocs(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
