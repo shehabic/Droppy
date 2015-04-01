@@ -2,6 +2,7 @@ package com.shehabic.droppy;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.graphics.Point;
 import android.view.Gravity;
 import android.view.Menu;
@@ -59,10 +60,6 @@ public class DroppyMenuPopup {
         }
     }
 
-    protected Activity getActivity() {
-        return (Activity) mContext;
-    }
-
     public View getMenuView() {
         return mPopupView;
     }
@@ -90,8 +87,8 @@ public class DroppyMenuPopup {
                 dismiss();
             }
         });
-        lp.topMargin -= getActivity().getWindow().getDecorView().getTop();
-        getActivity().getWindow().addContentView(modalWindow, lp);
+        lp.topMargin -= getActivity(mContext).getWindow().getDecorView().getTop();
+        getActivity(mContext).getWindow().addContentView(modalWindow, lp);
     }
 
     public void show() {
@@ -104,12 +101,11 @@ public class DroppyMenuPopup {
         ((ViewGroup) mContentView).addView(mPopupView);
         mContentView.setFocusable(true);
         mContentView.setClickable(true);
-        getActivity().getWindow().addContentView(mContentView, lp);
+        getActivity(mContext).getWindow().addContentView(mContentView, lp);
         mContentView.requestFocus();
     }
 
-    protected void detachPopupView()
-    {
+    protected void detachPopupView() {
         if (mPopupView.getParent() != null) {
             try {
                 ((ViewGroup) mPopupView.getParent()).removeView(mPopupView);
@@ -182,13 +178,13 @@ public class DroppyMenuPopup {
 
     protected Point getScreenSize() {
         Point size = new Point();
-        ((Activity) anchor.getContext()).getWindowManager().getDefaultDisplay().getSize(size);
+        getActivity(anchor.getContext()).getWindowManager().getDefaultDisplay().getSize(size);
 
         return size;
     }
 
     protected boolean isTranslucentStatusBar() {
-        Window w = ((Activity) anchor.getContext()).getWindow();
+        Window w = getActivity(anchor.getContext()).getWindow();
         WindowManager.LayoutParams lp = w.getAttributes();
         int flags = lp.flags;
 
@@ -241,6 +237,17 @@ public class DroppyMenuPopup {
         public PopupViewContainer(Context context) {
             super(context);
         }
+    }
+
+    protected static Activity getActivity(Context context) {
+
+        if (context instanceof Activity) {
+            return (Activity) context;
+        } else if (context instanceof ContextWrapper) {
+            return getActivity(((ContextWrapper) context).getBaseContext());
+        }
+
+        return null;
     }
 
     public static class Builder {
