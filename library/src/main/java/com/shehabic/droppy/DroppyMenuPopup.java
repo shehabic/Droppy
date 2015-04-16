@@ -155,6 +155,13 @@ public class DroppyMenuPopup {
         }
     }
 
+    public void callOnClick(final int position) {
+        if (droppyMenuContainer != null && droppyMenuContainer.getChildCount() > position) {
+            final View view = droppyMenuContainer.getChildAt(position);
+            callOnClick(view, view.getId());
+        }
+    }
+
     protected void addMenuItemView(DroppyMenuItemInterface menuItem, final int id) {
         final View menuItemView = menuItem.render(mContext);
 
