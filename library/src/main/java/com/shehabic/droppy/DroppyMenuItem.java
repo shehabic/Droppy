@@ -47,6 +47,7 @@ public class DroppyMenuItem extends DroppyMenuItemAbstract {
         if (this.icon != -1) {
             DroppyMenuItemIconView droppyMenuItemIcon = new DroppyMenuItemIconView(context);
             droppyMenuItemIcon.setImageResource(this.icon);
+            renderedView.addView(droppyMenuItemIcon);
         } else if (this.iconDrawable != null) {
             DroppyMenuItemIconView droppyMenuItemIcon = new DroppyMenuItemIconView(context);
             droppyMenuItemIcon.setImageDrawable(iconDrawable);
