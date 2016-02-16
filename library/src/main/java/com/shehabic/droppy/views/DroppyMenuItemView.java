@@ -64,5 +64,6 @@ public class DroppyMenuItemView extends LinearLayout {
         }
 
         this.setLayoutParams(lp);
+        a.recycle();
     }
 }

@@ -7,11 +7,21 @@
         <!--<item name="droppyMenuItemStyle">@style/Droppy.DroppyMenuItem</item>-->
         <item name="droppyMenuItemTitleStyle">@style/customMenuItemTitle</item>
         <item name="droppyMenuItemIconStyle">@style/customMenuItemIcon</item>
+        <item name="droppyMenuItemStyle">@style/customMenuItem</item>
+        <item name="droppyMenuSeparatorStyle">@style/customMenuSeparator</item>
         <!--<item name="droppyMenuItemIconStyle">@style/Droppy.DroppyMenuItemIcon</item>-->
     </style>
 
     <style name="customMenuItemIcon" parent="Droppy.DroppyMenuItemIcon">
         <item name="android:layout_weight">0</item>
+    </style>
+
+    <style name="customMenuSeparator" parent="Droppy.DroppyMenuSeparator">
+        <item name="android:background">#FF0000</item>
+    </style>
+
+    <style name="customMenuItem" parent="Droppy.DroppyMenuItem">
+        <!-- your custom style -->
     </style>
 
     <style name="customMenuItemTitle" parent="Droppy.DroppyMenuItemTitle">
@@ -35,6 +45,7 @@
         <item name="android:paddingBottom">0dp</item>
         <item name="android:background">@android:drawable/bottom_bar</item>
     </style>
+
 
     <!-- Backward-compatible version of ?android:attr/buttonBarButtonStyle -->
     <style name="ButtonBarButton"/>

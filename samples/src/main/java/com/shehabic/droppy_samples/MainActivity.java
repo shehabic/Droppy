@@ -8,16 +8,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import com.shehabic.droppy.DroppyClickCallbackInterface;
 import com.shehabic.droppy.DroppyMenuCustomItem;
 import com.shehabic.droppy.DroppyMenuPopup;
 import com.shehabic.droppy.DroppyMenuItem;
+import com.shehabic.droppy.animations.DroppyFadeInAnimation;
+import com.shehabic.droppy.animations.DroppyScaleAnimation;
 
 /**
  * Created by shehabic on 3/21/15.
  */
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements DroppyMenuPopup.OnDismissCallback, DroppyClickCallbackInterface {
 
     DroppyMenuPopup droppyMenu;
     Button btn;
@@ -81,21 +84,19 @@ public class MainActivity extends ActionBarActivity {
     private void initDroppyMenu(Button btn)
     {
         DroppyMenuPopup.Builder droppyBuilder = new DroppyMenuPopup.Builder(this, btn);
-        droppyBuilder.addMenuItem(new DroppyMenuItem("test1"))
-            .addMenuItem(new DroppyMenuItem("test2"))
+        droppyBuilder.addMenuItem(new DroppyMenuItem("First Item"))
+            .addMenuItem(new DroppyMenuItem("Second Item"))
             .addSeparator()
-            .addMenuItem(new DroppyMenuItem("test3", R.drawable.ic_launcher))
+            .setOnDismissCallback(this)
+            .setOnClick(this)
+            .addMenuItem(new DroppyMenuItem("Third Item", R.drawable.ic_launcher))
+            .setPopupAnimation(new DroppyFadeInAnimation())
             .triggerOnAnchorClick(false);
 
         DroppyMenuCustomItem sBarItem = new DroppyMenuCustomItem(R.layout.slider);
-        droppyBuilder.addMenuItem(sBarItem);
+        droppyBuilder.addMenuItem(sBarItem)
+            .setOnClick(this);
 
-        droppyBuilder.setOnClick(new DroppyClickCallbackInterface() {
-            @Override
-            public void call(View v, int id) {
-                Log.d("Clicked on ", String.valueOf(id));
-            }
-        });
         droppyMenu = droppyBuilder.build();
     }
 
@@ -104,12 +105,9 @@ public class MainActivity extends ActionBarActivity {
         DroppyMenuPopup.Builder droppyBuilder = new DroppyMenuPopup.Builder(this, btn);
         DroppyMenuPopup droppyMenu = droppyBuilder.fromMenu(R.menu.droppy)
             .triggerOnAnchorClick(false)
-            .setOnClick(new DroppyClickCallbackInterface() {
-                @Override
-                public void call(View v, int id) {
-                    Log.d("Id:", String.valueOf(id));
-                }
-            })
+            .setOnClick(this)
+            .setOnDismissCallback(this)
+            .setPopupAnimation(new DroppyScaleAnimation())
             .build();
         droppyMenu.show();
     }
@@ -134,5 +132,44 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void call()
+    {
+        Toast.makeText(this, "Menu dismissed", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void call(View v, int id)
+    {
+        String idText;
+
+        switch (id) {
+            case R.id.droppy1:  idText = "Droppy Item 1"; break;
+            case R.id.droppy2:  idText = "Droppy Item 2"; break;
+            case R.id.droppy3:  idText = "Droppy Item 3"; break;
+            case R.id.droppy4:  idText = "Droppy Item 4"; break;
+            case R.id.droppy5:  idText = "Droppy Item 5"; break;
+            case R.id.droppy6:  idText = "Droppy Item 6"; break;
+            case R.id.droppy7:  idText = "Droppy Item 7"; break;
+            case R.id.droppy8:  idText = "Droppy Item 8"; break;
+            case R.id.droppy9:  idText = "Droppy Item 9"; break;
+            // .
+            // .
+            // .
+            // .
+            case R.id.droppy18: idText = "Droppy Item 18"; break;
+            case R.id.droppy19: idText = "Droppy Item 19"; break;
+            case R.id.droppy20: idText = "Droppy Item 20"; break;
+            case R.id.droppy21: idText = "Droppy Item 21"; break;
+            case R.id.droppy22: idText = "Droppy Item 22"; break;
+            case R.id.droppy23: idText = "Droppy Item 23"; break;
+
+            default:
+                idText = String.valueOf(id);
+        }
+
+        Toast.makeText(this, "Tapped on item with id: " + idText, Toast.LENGTH_SHORT).show();
     }
 }

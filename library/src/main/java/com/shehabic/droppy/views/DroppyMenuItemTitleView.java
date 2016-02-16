@@ -54,5 +54,6 @@ public class DroppyMenuItemTitleView extends TextView {
         setMinHeight(minHeight);
 
         setTextColor(color);
+        a.recycle();
     }
 }

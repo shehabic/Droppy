@@ -14,15 +14,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
+import com.shehabic.droppy.animations.DroppyAnimation;
 import com.shehabic.droppy.views.DroppyMenuContainerView;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by shehabic on 2/28/15.
- */
 public class DroppyMenuPopup {
     protected Context mContext;
     protected View anchor;
@@ -36,20 +34,40 @@ public class DroppyMenuPopup {
     protected int mPopupWidth;
     protected int mPopupHeight;
     protected int statusBarHeight = -1;
+    protected OnDismissCallback mOnDismissCallback;
+    protected int offsetX;
+    protected int offsetY;
+    protected DroppyAnimation popupAnimation;
 
-    private DroppyMenuPopup(
+    public void setOffsetY(int offsetY)
+    {
+        this.offsetY = offsetY;
+    }
+
+    public void setOffsetX(int offsetX)
+    {
+        this.offsetX = offsetX;
+    }
+
+    public interface OnDismissCallback {
+        public void call();
+    }
+
+    protected DroppyMenuPopup(
         Context mContext,
         View parentMenuItem,
         List<DroppyMenuItemInterface> menuItem,
         DroppyClickCallbackInterface droppyClickCallbackInterface,
         boolean addTriggerOnAnchorClick,
-        int popupMenuLayoutResourceId
+        int popupMenuLayoutResourceId,
+        OnDismissCallback onDismissCallback
     ) {
         this.mContext = mContext;
         this.anchor = parentMenuItem;
         this.menuItems = menuItem;
         this.droppyClickCallbackInterface = droppyClickCallbackInterface;
         this.popupMenuLayoutResourceId = popupMenuLayoutResourceId;
+        this.mOnDismissCallback = onDismissCallback;
         if (addTriggerOnAnchorClick) {
             anchor.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -84,7 +102,7 @@ public class DroppyMenuPopup {
         modalWindow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dismiss();
+                dismiss(false);
             }
         });
         lp.topMargin -= getActivity(mContext).getWindow().getDecorView().getTop();
@@ -95,7 +113,7 @@ public class DroppyMenuPopup {
         addModal();
         render();
         FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        adjustDropDownPosition(lp, -20, 30);
+        adjustDropDownPosition(lp, offsetX, offsetY);
         mContentView = new PopupViewContainer(mContext);
         detachPopupView();
         ((ViewGroup) mContentView).addView(mPopupView);
@@ -103,6 +121,9 @@ public class DroppyMenuPopup {
         mContentView.setClickable(true);
         getActivity(mContext).getWindow().addContentView(mContentView, lp);
         mContentView.requestFocus();
+        if (popupAnimation != null) {
+            popupAnimation.animateShow(mPopupView, anchor);
+        }
     }
 
     protected void detachPopupView() {
@@ -115,9 +136,29 @@ public class DroppyMenuPopup {
         }
     }
 
-    public void dismiss() {
+    public void hideAnimationCompleted(boolean itemSelected)
+    {
+        dismissPopup(itemSelected);
+    }
+
+    public void dismiss(boolean itemSelected) {
+        if (popupAnimation != null) {
+            popupAnimation.animateHide(this, mPopupView, anchor, itemSelected);
+
+            return;
+        }
+        dismissPopup(itemSelected);
+    }
+
+    protected void dismissPopup(boolean itemSelected)
+    {
         ((ViewGroup) mContentView.getParent()).removeView(mContentView);
         ((ViewGroup) modalWindow.getParent()).removeView(modalWindow);
+
+        if (!itemSelected && this.mOnDismissCallback != null) {
+            mOnDismissCallback.call();
+            this.mOnDismissCallback = null;
+        }
     }
 
     protected void render() {
@@ -151,7 +192,7 @@ public class DroppyMenuPopup {
     protected void callOnClick(final View v, final int id) {
         if (this.droppyClickCallbackInterface != null) {
             droppyClickCallbackInterface.call(v, id);
-            dismiss();
+            dismiss(true);
         }
     }
 
@@ -212,25 +253,45 @@ public class DroppyMenuPopup {
         return new Point(coords[0], coords[1] - getStatusBarHeight());
     }
 
+    protected void setPopupAnimation(DroppyAnimation popupAnimation)
+    {
+        this.popupAnimation = popupAnimation;
+    }
+
     protected void adjustDropDownPosition(FrameLayout.LayoutParams params, int xOffset, int yOffset) {
-        Point p = getAnchorCoordinates();
-        int finalX = p.x + xOffset;
+        Point anchorPosition = getAnchorCoordinates();
+        int finalX = anchorPosition.x + xOffset;
         final int anchorHeight = anchor.getHeight();
-        int finalY = p.y + anchorHeight;
+        int finalY = anchorPosition.y + anchorHeight;
         Point screen = getScreenSize();
         int rightMargin = screen.x - (finalX + mPopupView.getMeasuredWidth());
         if (rightMargin < 0) {
             finalX = screen.x - (mPopupWidth + xOffset);
         }
 
-        if (finalY + mPopupHeight > screen.y && p.y > mPopupHeight) {
-            finalY = p.y - mPopupHeight - (-1 * yOffset);
+        if ((finalY + mPopupHeight) > screen.y /*&& p.y > mPopupHeight*/) {
+            finalY = anchorPosition.y - mPopupHeight - (-1 * yOffset);
         }
 
         params.leftMargin = Math.max(0, finalX);
         params.topMargin = Math.max(0, finalY);
-
         params.gravity = Gravity.LEFT | Gravity.TOP;
+
+
+        int maxDistanceAbove = anchorPosition.y;
+        int maxDistanceBelow = screen.y - anchorHeight - anchorPosition.y - offsetY;
+        boolean popupAboveAnchor = maxDistanceAbove > maxDistanceBelow;
+        boolean noRoomAbove = popupAboveAnchor && (anchorPosition.y < mPopupHeight);
+        boolean noRoomBelow = !popupAboveAnchor && (mPopupHeight > (maxDistanceBelow));
+        if (noRoomAbove || noRoomBelow) {
+            if (popupAboveAnchor) {
+                params.height = maxDistanceAbove;
+                params.topMargin = 0;
+            } else {
+                params.height = maxDistanceBelow;
+                params.topMargin = anchorHeight + anchorPosition.y;
+            }
+        }
     }
 
     protected class PopupViewContainer extends FrameLayout {
@@ -256,6 +317,10 @@ public class DroppyMenuPopup {
         protected List<DroppyMenuItemInterface> menuItems = new ArrayList<DroppyMenuItemInterface>();
         protected DroppyClickCallbackInterface callbackInterface;
         protected boolean triggerOnAnchorClick = true;
+        protected OnDismissCallback onDismissCallback;
+        protected int offsetX = -20;
+        protected int offsetY = 25;
+        protected DroppyAnimation droppyAnimation;
 
         public Builder(Context ctx, View parentMenuItem) {
             this.ctx = ctx;
@@ -280,8 +345,33 @@ public class DroppyMenuPopup {
             return this;
         }
 
+        public Builder setXOffset(int xOffset)
+        {
+            this.offsetX = xOffset;
+
+            return this;
+        }
+
+        public Builder setYOffset(int yOffset)
+        {
+            this.offsetY = yOffset;
+
+            return this;
+        }
+
         public Builder triggerOnAnchorClick(boolean onAnchorClick) {
             triggerOnAnchorClick = onAnchorClick;
+            return this;
+        }
+
+        public Builder setOnDismissCallback(OnDismissCallback onDismissCallback) {
+            this.onDismissCallback = onDismissCallback;
+            return this;
+        }
+
+        public Builder setPopupAnimation(DroppyAnimation droppyAnimation)
+        {
+            this.droppyAnimation = droppyAnimation;
             return this;
         }
 
@@ -327,7 +417,12 @@ public class DroppyMenuPopup {
         }
 
         public DroppyMenuPopup build() {
-            return new DroppyMenuPopup(ctx, parentMenuItem, menuItems, callbackInterface, triggerOnAnchorClick, -1);
+            DroppyMenuPopup popup =  new DroppyMenuPopup(ctx, parentMenuItem, menuItems, callbackInterface, triggerOnAnchorClick, -1, onDismissCallback);
+            popup.setOffsetX(offsetX);
+            popup.setOffsetY(offsetY);
+            popup.setPopupAnimation(droppyAnimation);
+
+            return popup;
         }
     }
 }

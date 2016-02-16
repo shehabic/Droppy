@@ -7,7 +7,7 @@ A simple yet-customizable Android drop-down menu. It supports Text with/without 
 
 Version
 =======
-v.0.2.5.2
+v.0.5.0
 
 Usage (Maven)
 =============
@@ -15,14 +15,14 @@ Usage (Maven)
 <dependency>
     <groupId>com.shehabic.droppy</groupId>
     <artifactId>Droppy</artifactId>
-    <version>0.2.5.2</version>
+    <version>0.5.0</version>
 </dependency>
 ```
 
 Usage (Gradle)
 ==============
 ```groovy
-compile 'com.shehabic.droppy:Droppy:0.2.5.2@aar'
+compile 'com.shehabic.droppy:Droppy:0.5.0@aar'
 ```
 
 Generate Programmatically
@@ -109,6 +109,16 @@ DroppyMenuPopup droppyMenu = droppyBuilder.fromMenu(R.menu.droppy)
             Log.d("Id:", String.valueOf(id));
         }
     })
+    .setOnDismissCallback(DroppyMenuPopup.OnDismissCallback() {
+        @Override
+        public void call()
+        {
+            Toast.makeText(this, "Menu dismissed", Toast.LENGTH_SHORT).show();
+        }
+     })
+    .setPopupAnimation(new DroppyFadeInAnimation())
+    .setXOffset(5)
+    .setYOffset(5)
     .build();
 droppyMenu.show();
 ```
@@ -119,6 +129,7 @@ Customizing Syles
     <style name="YourAppTheme" parent="Whatever.Parent.Theme.You.Are.Extending">
         <item name="droppyPopupStyle">@style/Your.Custom.DroppyPopup</item>
         <item name="droppyMenuStyle">@style/Your.Custom.DroppyMenu</item>
+        <item name="droppyMenuSeparator">@style/Your.Custom.DroppyMenuSeparator</item>
         <item name="droppyMenuItemStyle">@style/Your.Custom.DroppyMenuItem</item>
         <item name="droppyMenuItemTitleStyle">@style/Your.Custom.DroppyMenuItemTitle</item>
         <item name="droppyMenuItemIconStyle">@style/Your.Custom.DroppyMenuItemIcon</item>
@@ -131,6 +142,9 @@ Customizing Syles
     <style name="Your.Custom.DroppyMenu" parent="Droppy.DroppyMenu">
         <!-- Your Custom style attributes go here -->
     </style>
+    <style name="Your.Custom.DroppyMenuSeparator" parent="Droppy.DroppyMenuSeparator">
+            <!-- Your Custom style attributes go here -->
+        </style>
     <style name="Your.Custom.DroppyMenuItem" parent="Droppy.DroppyMenuItem">
         <!-- Your Custom style attributes go here -->
     </style>
@@ -144,6 +158,8 @@ Customizing Syles
 
 How it looks like
 =================
+![](https://raw.githubusercontent.com/shehabic/Droppy/master/droppy-preview.gif)
+
 ![](https://raw.githubusercontent.com/shehabic/Droppy/screenshots/Droppy_Screenshot.png)
 
 Why not the native PopupMenu?
@@ -167,7 +183,7 @@ Developed By
 
 License
 =======
-    Copyright 2015 Mohamed Shehab
+    Copyright 2015-2016 Mohamed Shehab
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

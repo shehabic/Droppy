@@ -36,5 +36,6 @@ public class DroppyMenuContainerView extends LinearLayout
             lp.height = height;
         }
         setLayoutParams(lp);
+        a.recycle();
     }
 }

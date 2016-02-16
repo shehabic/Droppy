@@ -6,13 +6,14 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ScrollView;
 
 import com.shehabic.droppy.R;
 
 /**
  * Created by shehabic on 3/6/15.
  */
-public class DroppyMenuPopupView extends FrameLayout
+public class DroppyMenuPopupView extends ScrollView
 {
     public DroppyMenuPopupView(Context context) {
         this(context, null);
@@ -44,5 +45,6 @@ public class DroppyMenuPopupView extends FrameLayout
         } else {
             setBackgroundDrawable(defaultDrawable);
         }
+        a.recycle();
     }
 }

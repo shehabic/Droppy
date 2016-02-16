@@ -106,6 +106,7 @@ public class ActivityWithFragment extends FragmentActivity {
                     Log.d("Clicked on ", String.valueOf(id));
                 }
             });
+
             droppyMenu = droppyBuilder.build();
         }
 

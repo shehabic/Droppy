@@ -3,7 +3,7 @@
       tools:context="com.shehabic.droppy_samples.DefaultExampleActivity">
     <group android:enabled="true">
         <item
-            android:id="@+id/dropp1"
+            android:id="@+id/droppy1"
             android:title="Xml Item 1"
             android:icon="@drawable/droppy1"
             />
@@ -16,7 +16,7 @@
     </group>
     <group android:enabled="true">
         <item
-            android:id="@+id/dropp3"
+            android:id="@+id/droppy3"
             android:icon="@drawable/droppy3"
             android:title="Xml Item 3"
             />
@@ -26,5 +26,126 @@
             android:icon="@drawable/droppy4"
             android:title="Xml Item 4"
             />
+
+        <item
+            android:id="@+id/droppy5"
+            android:icon="@drawable/droppy1"
+            android:title="Xml Item 5"
+            />
+
+        <item
+            android:id="@+id/droppy6"
+            android:icon="@drawable/droppy2"
+            android:title="Xml Item 6"
+            />
+
+        <item
+            android:id="@+id/droppy7"
+            android:icon="@drawable/droppy4"
+            android:title="Xml Item 7"
+            />
+
+        <item
+            android:id="@+id/droppy8"
+            android:icon="@drawable/droppy1"
+            android:title="Xml Item 8"
+            />
+
+
+        <item
+            android:id="@+id/droppy9"
+            android:icon="@drawable/droppy2"
+            android:title="Xml Item 9"
+            />
+
+
+        <item
+            android:id="@+id/droppy10"
+            android:icon="@drawable/droppy3"
+            android:title="Xml Item 10"
+            />
+        <item
+            android:id="@+id/droppy11"
+            android:icon="@drawable/droppy4"
+            android:title="Xml Item 11"
+            />
+
+        <item
+            android:id="@+id/droppy12"
+            android:icon="@drawable/droppy1"
+            android:title="Xml Item 12"
+            />
+
+
+        <item
+            android:id="@+id/droppy13"
+            android:icon="@drawable/droppy2"
+            android:title="Xml Item 13"
+            />
+
+
+
+
+        <item
+            android:id="@+id/droppy14"
+            android:icon="@drawable/droppy3"
+            android:title="Xml Item 14"
+            />
+
+        <item
+            android:id="@+id/droppy15"
+            android:icon="@drawable/droppy4"
+            android:title="Xml Item 15"
+            />
+
+        <item
+            android:id="@+id/droppy16"
+            android:icon="@drawable/droppy1"
+            android:title="Xml Item 16"
+            />
+
+        <item
+            android:id="@+id/droppy17"
+            android:icon="@drawable/droppy2"
+            android:title="Xml Item 17"
+            />
+
+        <item
+            android:id="@+id/droppy18"
+            android:icon="@drawable/droppy3"
+            android:title="Xml Item 18"
+            />
+
+
+        <item
+            android:id="@+id/droppy19"
+            android:icon="@drawable/droppy4"
+            android:title="Xml Item 19"
+            />
+
+        <item
+            android:id="@+id/droppy20"
+            android:icon="@drawable/droppy1"
+            android:title="Xml Item 20"
+            />
+
+        <item
+            android:id="@+id/droppy21"
+            android:icon="@drawable/droppy2"
+            android:title="Xml Item 21"
+            />
+
+        <item
+            android:id="@+id/droppy22"
+            android:icon="@drawable/droppy3"
+            android:title="Xml Item 22"
+            />
+
+        <item
+            android:id="@+id/droppy23"
+            android:icon="@drawable/droppy4"
+            android:title="Xml Item 23"
+            />
+
     </group>
 </menu>

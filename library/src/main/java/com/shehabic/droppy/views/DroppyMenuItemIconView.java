@@ -50,5 +50,6 @@ public class DroppyMenuItemIconView extends ImageView {
         setMaxHeight(maxWidth);
         setMaxHeight(maxHeight);
         setLayoutParams(lp);
+        a.recycle();
     }
 }
