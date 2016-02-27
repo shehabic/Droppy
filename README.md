@@ -7,7 +7,7 @@ A simple yet-customizable Android drop-down menu. It supports Text with/without 
 
 Version
 =======
-v.0.5.0
+v.0.5.1
 
 Usage (Maven)
 =============
@@ -15,14 +15,14 @@ Usage (Maven)
 <dependency>
     <groupId>com.shehabic.droppy</groupId>
     <artifactId>Droppy</artifactId>
-    <version>0.5.0</version>
+    <version>0.5.1</version>
 </dependency>
 ```
 
 Usage (Gradle)
 ==============
 ```groovy
-compile 'com.shehabic.droppy:Droppy:0.5.0@aar'
+compile 'com.shehabic.droppy:Droppy:0.5.1@aar'
 ```
 
 Generate Programmatically
