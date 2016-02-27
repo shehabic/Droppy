@@ -1,6 +1,10 @@
 Changelog
 ===================================
 
+v.0.5.1  Release Notes:
+====================================
+* Added support for ripple effect for Android >= Lollipop (5.x+)
+
 v.0.5.0  Release Notes:
 ====================================
 * Added dismiss callback
