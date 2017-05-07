@@ -7,22 +7,25 @@ A simple yet-customizable Android drop-down menu. It supports Text with/without 
 
 Version
 =======
-v.0.5.1
-
-Usage (Maven)
-=============
-```XML
-<dependency>
-    <groupId>com.shehabic.droppy</groupId>
-    <artifactId>Droppy</artifactId>
-    <version>0.5.1</version>
-</dependency>
-```
+v.0.6.1
 
 Usage (Gradle)
 ==============
+
+### Repository
+
+Add the following repo to your `app/build.gradle`
+
+```gradle
+repositories {
+    maven { url "https://jitpack.io" }
+}
+```
+
+### Dependency
+
 ```groovy
-compile 'com.shehabic.droppy:Droppy:0.5.1@aar'
+compile 'com.github.shehabic:droppy:0.6.1'
 ```
 
 Generate Programmatically
