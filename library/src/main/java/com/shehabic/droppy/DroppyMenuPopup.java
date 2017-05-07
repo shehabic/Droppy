@@ -152,12 +152,14 @@ public class DroppyMenuPopup {
 
     protected void dismissPopup(boolean itemSelected)
     {
-        ((ViewGroup) mContentView.getParent()).removeView(mContentView);
-        ((ViewGroup) modalWindow.getParent()).removeView(modalWindow);
+        if (mContentView != null && modalWindow != null) { 
+            ((ViewGroup) mContentView.getParent()).removeView(mContentView);
+            ((ViewGroup) modalWindow.getParent()).removeView(modalWindow);
 
-        if (!itemSelected && this.mOnDismissCallback != null) {
-            mOnDismissCallback.call();
-            this.mOnDismissCallback = null;
+            if (!itemSelected && this.mOnDismissCallback != null) {
+                mOnDismissCallback.call();
+                this.mOnDismissCallback = null;
+            }
         }
     }
 
