@@ -13,8 +13,8 @@ import com.shehabic.droppy.R;
 /**
  * Created by shehabic on 3/6/15.
  */
-public class DroppyMenuPopupView extends ScrollView
-{
+public class DroppyMenuPopupView extends ScrollView {
+
     public DroppyMenuPopupView(Context context) {
         this(context, null);
     }

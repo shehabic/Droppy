@@ -15,33 +15,29 @@ public class DroppyMenuItem extends DroppyMenuItemAbstract {
     private Drawable iconDrawable;
     protected com.shehabic.droppy.views.DroppyMenuItemView renderedView;
 
-    void initMenuItem(String title, int iconResourceId)
-    {
+    void initMenuItem(String title, int iconResourceId) {
         this.title = title;
         if (iconResourceId > 0) {
             this.icon = iconResourceId;
         }
     }
 
-    public DroppyMenuItem(String title)
-    {
+    public DroppyMenuItem(String title) {
         initMenuItem(title, -1);
     }
 
-    public DroppyMenuItem(String title, int iconResourceId)
-    {
+    public DroppyMenuItem(String title, int iconResourceId) {
         initMenuItem(title, iconResourceId);
 
     }
 
-    public void setIcon(Drawable iconDrawable)
-    {
+    public void setIcon(Drawable iconDrawable) {
         this.iconDrawable = iconDrawable;
     }
 
     @Override
     public View render(Context context) {
-        
+
         renderedView = new com.shehabic.droppy.views.DroppyMenuItemView(context);
 
         if (this.icon != -1) {
