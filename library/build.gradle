@@ -21,7 +21,7 @@ android {
 ext {
     PUBLISH_GROUP_ID = 'com.shehabic.droppy'
     PUBLISH_ARTIFACT_ID = 'Droppy'
-    PUBLISH_VERSION = '0.5.1'
+    PUBLISH_VERSION = '0.6.0'
 }
 
 
@@ -114,7 +114,7 @@ configurations {
 }
 
 signing {
-    required { has("release") && gradle.taskGraph.hasTask("uploadArchives") }
+    required { gradle.taskGraph.hasTask("uploadArchives") }
     sign configurations.archives
 }
 
