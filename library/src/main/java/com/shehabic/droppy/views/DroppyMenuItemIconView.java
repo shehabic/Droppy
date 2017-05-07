@@ -13,7 +13,7 @@ import com.shehabic.droppy.R;
 /**
  * Created by shehabic on 3/7/15.
  */
-public class DroppyMenuItemIconView extends ImageView {
+public class DroppyMenuItemIconView extends android.support.v7.widget.AppCompatImageView {
 
     public DroppyMenuItemIconView(Context context) {
         this(context, null);
@@ -31,7 +31,7 @@ public class DroppyMenuItemIconView extends ImageView {
         final float defaultWeight = 0;
         final int defaultLayoutGravity = Gravity.START | Gravity.CENTER_VERTICAL;
         final int defaultMarginLeft = (int) getResources().getDimension(R.dimen.default_menu_item_icon_marginLeft);
-        final int defaultMarginRight= (int) getResources().getDimension(R.dimen.default_menu_item_icon_marginRight);
+        final int defaultMarginRight = (int) getResources().getDimension(R.dimen.default_menu_item_icon_marginRight);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DroppyMenuItemIconView, defStyleAttr, 0);
         int maxWidth = (int) a.getDimension(R.styleable.DroppyMenuItemIconView_android_maxWidth, defaultMaxWidth);

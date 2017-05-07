@@ -13,7 +13,7 @@ import com.shehabic.droppy.R;
 /**
  * Created by shehabic on 3/7/15.
  */
-public class DroppyMenuItemTitleView extends TextView {
+public class DroppyMenuItemTitleView extends android.support.v7.widget.AppCompatTextView {
 
     public DroppyMenuItemTitleView(Context context) {
         this(context, null);

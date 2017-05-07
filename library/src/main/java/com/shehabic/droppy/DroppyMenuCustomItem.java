@@ -9,13 +9,13 @@ import android.view.View;
  */
 public class DroppyMenuCustomItem extends DroppyMenuItemAbstract {
 
-    public DroppyMenuCustomItem(int customResourceId){
+    public DroppyMenuCustomItem(int customResourceId) {
         isClickable = false;
         type = TYPE_CUSTOM;
         customViewResourceId = customResourceId;
     }
 
-    public DroppyMenuCustomItem(View customView){
+    public DroppyMenuCustomItem(View customView) {
         isClickable = false;
         type = TYPE_CUSTOM;
         renderedView = customView;

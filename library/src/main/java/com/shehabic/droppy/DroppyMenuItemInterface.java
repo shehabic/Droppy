@@ -12,41 +12,38 @@ public interface DroppyMenuItemInterface {
      *
      * @return String
      */
-    public int getType();
+    int getType();
 
     /**
      * @param context
-     *
      * @return View rendered/inflated view
      */
-    public View render(Context context);
+    View render(Context context);
 
     /**
      * @param id Ideally the position in the list
-     *
      * @return DroppyMenuItemInterface
      */
-    public DroppyMenuItemInterface setId(int id);
+    DroppyMenuItemInterface setId(int id);
 
     /**
      * @param isClickable
-     *
      * @return DroppyMenuItemInterface
      */
-    public DroppyMenuItemInterface setClickable(boolean isClickable);
+    DroppyMenuItemInterface setClickable(boolean isClickable);
 
     /**
      * @return int
      */
-    public int getId();
+    int getId();
 
     /**
      * @return boolean
      */
-    public boolean isClickable();
+    boolean isClickable();
 
     /**
      * @return View
      */
-    public View getView();
+    View getView();
 }

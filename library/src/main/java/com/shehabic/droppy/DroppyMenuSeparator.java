@@ -2,6 +2,7 @@ package com.shehabic.droppy;
 
 import android.content.Context;
 import android.view.View;
+
 /**
  * Created by shehabic on 2/28/15.
  */

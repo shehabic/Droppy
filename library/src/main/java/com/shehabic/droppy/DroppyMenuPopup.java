@@ -39,13 +39,11 @@ public class DroppyMenuPopup {
     protected int offsetY;
     protected DroppyAnimation popupAnimation;
 
-    public void setOffsetY(int offsetY)
-    {
+    public void setOffsetY(int offsetY) {
         this.offsetY = offsetY;
     }
 
-    public void setOffsetX(int offsetX)
-    {
+    public void setOffsetX(int offsetX) {
         this.offsetX = offsetX;
     }
 
@@ -136,8 +134,7 @@ public class DroppyMenuPopup {
         }
     }
 
-    public void hideAnimationCompleted(boolean itemSelected)
-    {
+    public void hideAnimationCompleted(boolean itemSelected) {
         dismissPopup(itemSelected);
     }
 
@@ -150,9 +147,8 @@ public class DroppyMenuPopup {
         dismissPopup(itemSelected);
     }
 
-    protected void dismissPopup(boolean itemSelected)
-    {
-        if (mContentView != null && modalWindow != null) { 
+    protected void dismissPopup(boolean itemSelected) {
+        if (mContentView != null && modalWindow != null) {
             ((ViewGroup) mContentView.getParent()).removeView(mContentView);
             ((ViewGroup) modalWindow.getParent()).removeView(modalWindow);
 
@@ -255,8 +251,7 @@ public class DroppyMenuPopup {
         return new Point(coords[0], coords[1] - getStatusBarHeight());
     }
 
-    protected void setPopupAnimation(DroppyAnimation popupAnimation)
-    {
+    protected void setPopupAnimation(DroppyAnimation popupAnimation) {
         this.popupAnimation = popupAnimation;
     }
 
@@ -347,15 +342,13 @@ public class DroppyMenuPopup {
             return this;
         }
 
-        public Builder setXOffset(int xOffset)
-        {
+        public Builder setXOffset(int xOffset) {
             this.offsetX = xOffset;
 
             return this;
         }
 
-        public Builder setYOffset(int yOffset)
-        {
+        public Builder setYOffset(int yOffset) {
             this.offsetY = yOffset;
 
             return this;
@@ -371,8 +364,7 @@ public class DroppyMenuPopup {
             return this;
         }
 
-        public Builder setPopupAnimation(DroppyAnimation droppyAnimation)
-        {
+        public Builder setPopupAnimation(DroppyAnimation droppyAnimation) {
             this.droppyAnimation = droppyAnimation;
             return this;
         }
@@ -419,7 +411,7 @@ public class DroppyMenuPopup {
         }
 
         public DroppyMenuPopup build() {
-            DroppyMenuPopup popup =  new DroppyMenuPopup(ctx, parentMenuItem, menuItems, callbackInterface, triggerOnAnchorClick, -1, onDismissCallback);
+            DroppyMenuPopup popup = new DroppyMenuPopup(ctx, parentMenuItem, menuItems, callbackInterface, triggerOnAnchorClick, -1, onDismissCallback);
             popup.setOffsetX(offsetX);
             popup.setOffsetY(offsetY);
             popup.setPopupAnimation(droppyAnimation);
