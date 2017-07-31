@@ -148,7 +148,7 @@ public class DroppyMenuPopup {
     }
 
     protected void dismissPopup(boolean itemSelected) {
-        if (mContentView != null && modalWindow != null) {
+        if (mContentView != null && modalWindow != null && mContentView.getParent() != null && modalWindow.getParent() != null) {
             ((ViewGroup) mContentView.getParent()).removeView(mContentView);
             ((ViewGroup) modalWindow.getParent()).removeView(modalWindow);
 
