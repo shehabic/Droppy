@@ -1,4 +1,4 @@
-### Not currently under maintennance
+### Not currently under maintenance
 I'm afraid I don't have enough time at the moment to maintain the lib, if anyone would like to participate in modernizing it you're more than welcome :)
 
 ---
