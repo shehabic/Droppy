@@ -1,3 +1,9 @@
+### Not currently under maintennance
+I'm afraid I don't have enough time at the moment to maintain the lib, if anyone would like to participate in modernizing it you're more than welcome :)
+
+---
+
+
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Droppy-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1648)
 
 Droppy
